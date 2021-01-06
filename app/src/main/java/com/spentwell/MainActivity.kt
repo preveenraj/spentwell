@@ -14,19 +14,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val list = mutableListOf<String>()
-        list.add("Sample")
-        list.add("Prabha")
-        list.add("Preveen")
-        list.add("Sample")
-        list.add("Prabha")
-        list.add("Preveen")
-        list.add("Sample")
-        list.add("Prabha")
-        list.add("Preveen")
-        list.add("Sample")
-        list.add("Prabha")
-        list.add("Preveen")
-        binding.recyclerView.adapter = SampleAdapter(list)
     }
 }

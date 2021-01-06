@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/colorBackgroundPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.DashboardFragment">
+
+        <!--    <androidx.recyclerview.widget.RecyclerView-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="match_parent"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent" />-->
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Hello"
+            android:layout_height="match_parent" />
+
+        <soup.neumorphism.NeumorphFloatingActionButton
+            android:id="@+id/fabAddExpense"
+            android:layout_width="88dp"
+            android:src="@drawable/ic_add"
+            android:scaleType="centerInside"
+            app:neumorph_backgroundColor="@color/colorAccent"
+            android:layout_height="88dp"
+            android:hapticFeedbackEnabled="true"
+            app:neumorph_inset="16dp"
+            app:neumorph_shadowColorDark="@color/colorShadowDark"
+            app:neumorph_shadowColorLight="@color/colorShadowLight"
+            app:neumorph_shadowElevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

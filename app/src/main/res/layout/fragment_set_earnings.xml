@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorBackgroundPrimary"
+        android:layout_height="match_parent"
+        tools:context=".fragments.SetEarningsFragment">
+
+        <soup.neumorphism.NeumorphTextView
+            android:id="@+id/neumorphTextView"
+            style="@style/AppNameHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:text="@string/app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <soup.neumorphism.NeumorphCardView
+            style="@style/SpentWellCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:neumorph_shapeType="pressed"
+            app:neumorph_inset="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/btProceed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/neumorphTextView" >
+            <EditText
+                android:id="@+id/etEarnings"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                android:background="@null"
+                android:layout_height="wrap_content"/>
+        </soup.neumorphism.NeumorphCardView>
+        <soup.neumorphism.NeumorphButton
+            android:id="@+id/btProceed"
+            style="@style/LongButton"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_txt_proceed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

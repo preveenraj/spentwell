@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/earningsAllocationFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.spentwell.fragments.DashboardFragment"
+        android:label="dashboard_fragment"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_expenseEntryFragment"
+            app:enterAnim="@anim/anim_slide_in_left"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_right"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:destination="@id/expenseEntryFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setEarningsFragment"
+        android:name="com.spentwell.fragments.SetEarningsFragment"
+        android:label="set_earnings_fragment"
+        tools:layout="@layout/fragment_set_earnings" >
+        <action
+            android:id="@+id/action_setEarningsFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@anim/anim_slide_in_left"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_right"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:popUpTo="@id/earningsAllocationFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/earningsAllocationFragment"
+        android:name="com.spentwell.fragments.EarningsAllocationFragment"
+        android:label="earnings_allocation_fragment"
+        tools:layout="@layout/fragment_earnings_allocation" >
+        <action
+            android:id="@+id/action_earningsAllocationFragment_to_setEarningsFragment"
+            app:enterAnim="@anim/anim_slide_in_left"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_right"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:destination="@id/setEarningsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expenseEntryFragment"
+        android:name="com.spentwell.fragments.ExpenseEntryFragment"
+        android:label="expense_entry_fragment"
+        tools:layout="@layout/fragment_expense_entry" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.spentwell.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
