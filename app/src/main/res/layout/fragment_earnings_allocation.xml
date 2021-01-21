@@ -10,10 +10,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipChildren="false"
         android:background="@color/colorBackgroundPrimary"
         tools:context=".fragments.EarningsAllocationFragment">
 
-        <soup.neumorphism.NeumorphTextView
+        <TextView
             style="@style/AppNameHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,14 +24,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <soup.neumorphism.NeumorphButton
-            style="@style/LongButton"
+        <club.cred.synth.views.SynthButton
             android:id="@+id/btProceed"
+            style="@style/LongButton"
             android:layout_height="wrap_content"
             android:text="@string/btn_txt_proceed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

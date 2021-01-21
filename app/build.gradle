@@ -49,6 +49,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // UI
-    implementation 'com.github.fornewid:neumorphism:0.3.0'
+    implementation 'club.cred.android:synth:1.0.0'
 
 }

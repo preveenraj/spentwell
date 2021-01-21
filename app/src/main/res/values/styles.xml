@@ -1,4 +1,4 @@
-<resources>
+<resources  xmlns:app="http://schemas.android.com/apk/res-auto">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
@@ -9,32 +9,26 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
     </style>
 
-    <style name="SpentWellCard" parent="Widget.Neumorph.CardView">
+    <style name="SpentWellCard" >
         <!-- Customize your theme here. -->
-        <item name="neumorph_inset">@dimen/longButtonInset</item>
-        <item name="neumorph_shadowColorLight">@color/colorShadowLight</item>
-        <item name="neumorph_shadowColorDark">@color/colorShadowDark</item>
-        <item name="neumorph_shadowElevation">@dimen/longButtonShadowElevation</item>
+
     </style>
 
-    <style name="LongButton" parent="Widget.Neumorph.Button">
+    <style name="LongButton">
         <!-- Customize your theme here. -->
         <item name="android:layout_width">match_parent</item>
         <item name="android:textColor">@color/colorButtonText</item>
-        <item name="neumorph_backgroundColor">@color/colorAccent</item>
+        <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textAlignment">center</item>
         <item name="android:letterSpacing">0.2</item>
-        <item name="neumorph_inset">@dimen/longButtonInset</item>
-        <item name="neumorph_shadowColorLight">@color/colorShadowLight</item>
-        <item name="neumorph_shadowColorDark">@color/colorShadowDark</item>
-        <item name="neumorph_shadowElevation">@dimen/longButtonShadowElevation</item>
     </style>
 
-    <style name="AppNameHeader" parent="Widget.Neumorph.TextView">
+    <style name="AppNameHeader" >
         <!-- Customize your theme here. -->
         <item name="android:textSize">@dimen/textSizeAppName</item>
-        <item name="neumorph_shadowColorLight">@color/colorShadowLight</item>
-        <item name="neumorph_shadowColorDark">@color/colorShadowDark</item>
-        <item name="neumorph_shadowElevation">@dimen/longButtonShadowElevation</item>
+
     </style>
 
 </resources>

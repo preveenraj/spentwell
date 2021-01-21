@@ -13,14 +13,15 @@
         android:background="@color/colorBackgroundPrimary"
         tools:context=".fragments.ExpenseEntryFragment">
 
-        <soup.neumorphism.NeumorphButton
+        <club.cred.synth.views.SynthButton
             android:id="@+id/btProceed"
             style="@style/LongButton"
             android:layout_height="wrap_content"
             android:text="@string/btn_txt_save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

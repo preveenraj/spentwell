@@ -2,13 +2,13 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="textColorPrimary">#778296</color>
+    <color name="textColorPrimary">#ACB6CA</color>
     <color name="colorAccent">#D98D7E</color>
     <color name="colorPositive">#8BBB97</color>
     <color name="colorNegative">#D98D7E</color>
-    <color name="colorBackgroundPrimary">#ACB6CA</color>
-    <color name="colorBackgroundPrimaryDark">#7d8699</color>
-    <color name="colorShadowLight">#36FFFFFF</color>
-    <color name="colorShadowDark">#75384050</color>
+    <color name="colorBackgroundPrimary">#212426</color>
+    <color name="colorBackgroundPrimaryDark">#1F2223</color>
+    <color name="colorShadowLight">#FFFFFF</color>
+    <color name="colorShadowDark">#1A384050</color>
     <color name="colorButtonText">#C9FFFFFF</color>
 </resources>
