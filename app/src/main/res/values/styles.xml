@@ -19,10 +19,12 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:textColor">@color/colorButtonText</item>
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
+        <item name="neuButtonType">elevated_flat</item>
+        <item name="neuFlatButtonColor">@color/colorAccent</item>
         <item name="android:layout_margin">16dp</item>
-        <item name="android:padding">8dp</item>
+        <item name="android:padding">16dp</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:letterSpacing">0.2</item>
+        <item name="android:letterSpacing">0.3</item>
     </style>
 
     <style name="AppNameHeader" >
