@@ -37,7 +37,7 @@
                android:id="@+id/pitView"
                android:layout_width="match_parent"
                android:layout_height="0dp"
-               app:neuPlatformColor="@color/colorBackgroundPrimary"
+               style="@style/PitView"
                app:layout_constraintTop_toTopOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
