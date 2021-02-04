@@ -32,7 +32,11 @@
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
         <item name="neuLightShadowColor">@color/colorShadowLight</item>
         <item name="neuDarkShadowColor">@color/colorShadowDark</item>
+    </style>
 
+    <style name="FabButton">
+        <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
+        <item name="neuButtonRadius">28dp</item>
     </style>
 
     <style name="AppNameHeader">

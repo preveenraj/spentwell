@@ -8,9 +8,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/colorBackgroundPrimary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBackgroundPrimary"
         android:clipChildren="false"
         tools:context=".fragments.DashboardFragment">
 
@@ -23,22 +23,22 @@
         <!--        app:layout_constraintTop_toTopOf="parent" />-->
         <TextView
             android:layout_width="match_parent"
-            android:text="Hello"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:text="Hello" />
 
         <club.cred.synth.views.SynthImageButton
             android:id="@+id/fabAddExpense"
-            app:neuButtonRadius="28dp"
+            style="@style/FabButton"
             android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_margin="16dp"
+            android:hapticFeedbackEnabled="true"
             android:padding="16dp"
             android:src="@drawable/ic_add"
             android:tint="@color/colorNegative"
-            app:neuButtonDrawable="@drawable/ic_add"
-            android:layout_height="56dp"
-            android:hapticFeedbackEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:neuButtonDrawable="@drawable/ic_add" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
