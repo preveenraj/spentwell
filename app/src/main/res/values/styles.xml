@@ -1,4 +1,4 @@
-<resources  xmlns:app="http://schemas.android.com/apk/res-auto">
+<resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
@@ -27,7 +27,15 @@
         <item name="android:letterSpacing">0.3</item>
     </style>
 
-    <style name="AppNameHeader" >
+    <style name="PitView">
+        <item name="pitColor">@color/colorBackgroundPrimaryDark</item>
+        <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
+        <item name="neuLightShadowColor">@color/colorShadowLight</item>
+        <item name="neuDarkShadowColor">@color/colorShadowDark</item>
+
+    </style>
+
+    <style name="AppNameHeader">
         <!-- Customize your theme here. -->
         <item name="android:textSize">@dimen/textSizeAppName</item>
 
