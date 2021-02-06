@@ -12,4 +12,7 @@
     <color name="colorShadowDark">#1A384050</color>
     <color name="colorButtonText">#C9FFFFFF</color>
     <color name="colorHintText">#66FFFFFF</color>
+    <color name="colorButtonEnabled">@color/colorAccent</color>
+    <color name="colorButtonDisabled">#c6c6c6</color>
+
 </resources>
