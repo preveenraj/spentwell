@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion 30
@@ -30,6 +31,10 @@ android {
 }
 
 dependencies {
+    def room_version = "2.2.6"
+    def nav_version = "2.3.2"
+
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.0'
@@ -43,10 +48,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    def nav_version = "2.3.2"
-    // Kotlin
+    // NAVIGATION COMPONENT
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // ROOM DB
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
 
     // UI
     implementation 'club.cred.android:synth:1.0.0'
