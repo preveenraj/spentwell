@@ -1,47 +1,56 @@
     package com.spentwell.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.spentwell.R
+import com.spentwell.adapters.DashboardAdapter
 import com.spentwell.databinding.FragmentDashboardBinding
 import com.spentwell.viewmodels.DashboardViewModel
 
-class DashboardFragment : Fragment() {
+    class DashboardFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = DashboardFragment()
-    }
+        companion object {
+            fun newInstance() = DashboardFragment()
+        }
 
-    private lateinit var viewModel: DashboardViewModel
-    private lateinit var binding: FragmentDashboardBinding
+        private lateinit var viewModel: DashboardViewModel
+        private lateinit var binding: FragmentDashboardBinding
+        private var adapter: DashboardAdapter? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_dashboard, container, false
         )
-        setViews()
-        return binding.root
-    }
-
-    private fun setViews() {
-        binding.fabAddExpense.setOnClickListener{
-            val navDirections = DashboardFragmentDirections.actionDashboardFragmentToExpenseEntryFragment()
-            findNavController().navigate(navDirections)
+            return binding.root
         }
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-    }
+        private fun setViews() {
+            binding.fabAddExpense.setOnClickListener {
+                val navDirections =
+                    DashboardFragmentDirections.actionDashboardFragmentToExpenseEntryFragment()
+                findNavController().navigate(navDirections)
+            }
+            setAdapter()
+        }
 
-}
+        private fun setAdapter() {
+            adapter = DashboardAdapter(viewModel.list)
+            binding.recyclerView.adapter = adapter
+        }
+
+        override fun onActivityCreated(savedInstanceState: Bundle?) {
+            super.onActivityCreated(savedInstanceState)
+            viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+            setViews()
+        }
+
+    }

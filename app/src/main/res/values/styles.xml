@@ -18,7 +18,7 @@
     <style name="LongButton">
         <!-- Customize your theme here. -->
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textColor">@color/colorButtonText</item>
+        <item name="android:textColor">@color/textColorButton</item>
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
         <item name="neuButtonType">elevated_flat</item>
         <item name="neuFlatButtonColor">@color/colorButtonEnabled</item>

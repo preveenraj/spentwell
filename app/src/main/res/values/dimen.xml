@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="spacingLarge">20dp</dimen>
+    <dimen name="spacingMedium">15dp</dimen>
+    <dimen name="spacingSmall">10dp</dimen>
+
     <dimen name="longButtonInset">16dp</dimen>
     <dimen name="longButtonShadowElevation">2dp</dimen>
     <dimen name="textSizeAppName">48sp</dimen>
