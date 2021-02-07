@@ -61,15 +61,24 @@
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:pitColor="@color/colorBackgroundPrimary" />
 
-                            <club.cred.synth.views.ElevatedView
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="50dp"
-                                android:layout_height="6dp"
+                                android:layout_height="8dp"
+                                app:cardBackgroundColor="@color/colorPositive"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
+                                app:cardCornerRadius="4dp"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:neuPlatformColor="@color/colorPositive" />
+                                app:layout_constraintEnd_toEndOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacingSmall"
+                            android:text="32,000/50,000"
+                            android:textAlignment="textEnd"
+                            android:textSize="@dimen/textSizeNormal" />
 
                     </LinearLayout>
                 </LinearLayout>
