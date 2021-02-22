@@ -29,6 +29,10 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -50,5 +54,11 @@ dependencies {
 
     // UI
     implementation 'club.cred.android:synth:1.0.0'
+
+    // DEBUGGING
+    debugImplementation 'com.facebook.flipper:flipper:0.75.1'
+    debugImplementation 'com.facebook.soloader:soloader:0.10.1'
+
+    releaseImplementation 'com.facebook.flipper:flipper-noop:0.75.1'
 
 }
