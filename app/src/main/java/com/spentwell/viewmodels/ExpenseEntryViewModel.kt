@@ -1,13 +1,18 @@
 package com.spentwell.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.spentwell.base.Result
+import com.spentwell.data.AppDatabase
+import com.spentwell.data.models.Expense
 import com.spentwell.data.models.ExpenseType
 import com.spentwell.utils.isNotNullOrEmpty
+import kotlinx.coroutines.launch
+import java.lang.Double
 
-class ExpenseEntryViewModel : ViewModel() {
+class ExpenseEntryViewModel(application: Application) : AndroidViewModel(application) {
+
+    var expense: Expense? = null
 
     val expenseName = MutableLiveData<String>()
     val expenseAmount = MutableLiveData<String>()
@@ -15,6 +20,10 @@ class ExpenseEntryViewModel : ViewModel() {
     private val _expenseType = MutableLiveData<ExpenseType>()
     val expenseType: LiveData<ExpenseType>
         get() = _expenseType
+
+    private val _eventSubmitExpense = MutableLiveData<Boolean>()
+    val eventSubmitExpense: LiveData<Boolean>
+        get() = _eventSubmitExpense
 
     private val _isSaveButtonEnabled = MutableLiveData<Boolean>()
     val isSaveButtonEnabled: LiveData<Boolean>
@@ -33,6 +42,34 @@ class ExpenseEntryViewModel : ViewModel() {
         it.observeForever {
             /* empty */
         }
+    }
+
+    fun onSubmitExpense() {
+        _isSaveButtonEnabled.value = false
+        println("submit clicked")
+        createExpense()
+        _eventSubmitExpense.value = true
+    }
+
+    private fun createExpense() {
+        expense = Expense(
+            name = expenseName.value!!,
+            type = ExpenseType.NECESSITY,
+            amount = Double.parseDouble(expenseAmount.value!!)
+        )
+        viewModelScope.launch {
+            val result = try {
+                AppDatabase.getInstance(getApplication()).expenseDao().insertAll(expense!!)
+            } catch (e: Exception) {
+                Result.Error(Exception("Failed to add expense"))
+            }
+
+        }
+    }
+
+    fun onSubmissionCompleted() {
+        sendButtonValidation()
+        _eventSubmitExpense.value = false
     }
 
     private fun sendButtonValidation() {
