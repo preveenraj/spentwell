@@ -39,6 +39,7 @@ import com.spentwell.viewmodels.DashboardViewModel
                     DashboardFragmentDirections.actionDashboardFragmentToExpenseEntryFragment()
                 findNavController().navigate(navDirections)
             }
+
             setAdapter()
         }
 

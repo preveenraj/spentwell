@@ -3,12 +3,13 @@ package com.spentwell.viewmodels
 import android.app.Application
 import androidx.lifecycle.*
 import com.spentwell.base.Result
-import com.spentwell.data.AppDatabase
 import com.spentwell.data.models.Expense
 import com.spentwell.data.models.ExpenseType
+import com.spentwell.data.repository.ExpenseRepository
 import com.spentwell.utils.isNotNullOrEmpty
 import kotlinx.coroutines.launch
 import java.lang.Double
+import java.util.*
 
 class ExpenseEntryViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -28,6 +29,10 @@ class ExpenseEntryViewModel(application: Application) : AndroidViewModel(applica
     private val _isSaveButtonEnabled = MutableLiveData<Boolean>()
     val isSaveButtonEnabled: LiveData<Boolean>
         get() = _isSaveButtonEnabled
+
+    private val _eventCloseNavigation = MutableLiveData<Boolean>()
+    val eventCloseNavigation: LiveData<Boolean>
+        get() = _eventCloseNavigation
 
     private val expenseMediator = MediatorLiveData<String>().apply {
         addSource(expenseName) { value ->
@@ -55,11 +60,12 @@ class ExpenseEntryViewModel(application: Application) : AndroidViewModel(applica
         expense = Expense(
             name = expenseName.value!!,
             type = ExpenseType.NECESSITY,
-            amount = Double.parseDouble(expenseAmount.value!!)
+            amount = Double.parseDouble(expenseAmount.value!!),
+            dateTime = Date()
         )
         viewModelScope.launch {
             val result = try {
-                AppDatabase.getInstance(getApplication()).expenseDao().insertAll(expense!!)
+                ExpenseRepository(application = getApplication()).addNewExpense(expense!!)
             } catch (e: Exception) {
                 Result.Error(Exception("Failed to add expense"))
             }
@@ -70,6 +76,7 @@ class ExpenseEntryViewModel(application: Application) : AndroidViewModel(applica
     fun onSubmissionCompleted() {
         sendButtonValidation()
         _eventSubmitExpense.value = false
+        _eventCloseNavigation.value = true
     }
 
     private fun sendButtonValidation() {

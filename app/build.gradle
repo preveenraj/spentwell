@@ -41,7 +41,7 @@ repositories {
 dependencies {
     def room_version = "2.2.6"
     def nav_version = "2.3.3"
-
+    def archLifecycleVersion = '1.1.1'
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -54,6 +54,8 @@ dependencies {
     // LIFECYCLE
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+    implementation "android.arch.lifecycle:extensions:$archLifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$archLifecycleVersion"
 
     // TESTING
     testImplementation 'junit:junit:4.13.2'
