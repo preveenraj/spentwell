@@ -18,7 +18,7 @@ class App : Application() {
         if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(this)) {
             val client = AndroidFlipperClient.getInstance(this)
             client.addPlugin(InspectorFlipperPlugin(this, DescriptorMapping.withDefaults()))
-            client.addPlugin(SharedPreferencesFlipperPlugin(this))
+            client.addPlugin(SharedPreferencesFlipperPlugin(this, "earningsAllocation"))
             client.addPlugin(DatabasesFlipperPlugin(this))
             client.start()
         }
