@@ -28,6 +28,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
+}
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
@@ -67,5 +75,11 @@ dependencies {
 
     // UI
     implementation 'club.cred.android:synth:1.0.0'
+
+    // DEBUGGING
+    debugImplementation 'com.facebook.flipper:flipper:0.75.1'
+    debugImplementation 'com.facebook.soloader:soloader:0.10.1'
+    releaseImplementation 'com.facebook.flipper:flipper-noop:0.75.1'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
 
 }
