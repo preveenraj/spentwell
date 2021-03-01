@@ -2,7 +2,6 @@ package com.spentwell.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.spentwell.base.Result
 import com.spentwell.data.models.Expense
 import com.spentwell.data.models.ExpenseType
 import com.spentwell.data.repository.ExpenseRepository
@@ -64,16 +63,16 @@ class ExpenseEntryViewModel(application: Application) : AndroidViewModel(applica
             dateTime = Date()
         )
         viewModelScope.launch {
-            val result = try {
-                ExpenseRepository(application = getApplication()).addNewExpense(expense!!)
-            } catch (e: Exception) {
-                Result.Error(Exception("Failed to add expense"))
-            }
-
+            ExpenseRepository(application = getApplication()).addNewExpense(expense!!)
         }
+        onSubmissionCompleted()
+
     }
 
     fun onSubmissionCompleted() {
+        expenseName.value = ""
+        expenseAmount.value = ""
+        expense = null
         sendButtonValidation()
         _eventSubmitExpense.value = false
         _eventCloseNavigation.value = true

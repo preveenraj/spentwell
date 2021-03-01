@@ -19,7 +19,7 @@ class ExpenseRepository(application: Application) {
         return expenseDao.getLatestExpensesOfType(type = type, count = count)
     }
 
-    fun addNewExpense(expense: Expense) {
+    suspend fun addNewExpense(expense: Expense) {
         expenseDao.insertAll(expense)
     }
 }

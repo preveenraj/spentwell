@@ -10,7 +10,8 @@ import com.spentwell.data.models.Expense
 
 @Database(entities = [Expense::class], exportSchema = false, version = 1)
 @TypeConverters(
-    ExpenseTypeConverter::class
+    ExpenseTypeConverter::class,
+    DateConverter::class
 )
 abstract class AppDatabase : RoomDatabase() {
 
