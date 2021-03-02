@@ -99,8 +99,8 @@ class EarningsAllocationFragment : Fragment() {
         val sum = (n+s+l);
         overAll.text = " ${sum}/100"
         val layoutParams = overAllCard!!.layoutParams
+        Log.i("sdfs", sum.toString())
         if(sum == 0) {
-//            overAllCard.visibility = View.INVISIBLE
             layoutParams.width = 0
         } else {
             overAllCard.visibility = View.VISIBLE
@@ -199,5 +199,8 @@ class EarningsAllocationFragment : Fragment() {
             }
 
         })
+
+        setOverAllProgress()
+
     }
 }
