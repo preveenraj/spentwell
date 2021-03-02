@@ -49,7 +49,7 @@
               app:layout_constraintEnd_toEndOf="parent"
                android:id="@+id/etEarnings"
                android:layout_margin="16dp"
-               android:textColorHint="@color/colorHintText"
+               android:textColorHint="@color/textColorHint"
                android:hint="Earnings"
                android:layout_width="match_parent"
                android:inputType="numberDecimal"

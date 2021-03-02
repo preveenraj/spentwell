@@ -8,37 +8,108 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/colorBackgroundPrimary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBackgroundPrimary"
         android:clipChildren="false"
         tools:context=".fragments.DashboardFragment">
 
-        <!--    <androidx.recyclerview.widget.RecyclerView-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="match_parent"-->
-        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toTopOf="parent" />-->
-        <TextView
+        <ScrollView
             android:layout_width="match_parent"
-            android:text="Hello"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacingLarge"
+                    android:layout_marginTop="@dimen/spacingLarge"
+                    android:layout_marginEnd="@dimen/spacingLarge">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SW"
+                        android:textSize="@dimen/textSizeAppName" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="@dimen/spacingLarge"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipChildren="false">
+
+                            <club.cred.synth.views.PitView
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:pitColor="@color/colorBackgroundPrimary" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="50dp"
+                                android:layout_height="8dp"
+                                app:cardBackgroundColor="@color/colorPositive"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:cardCornerRadius="4dp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacingSmall"
+                            android:text="32,000/50,000"
+                            android:textAlignment="textEnd"
+                            android:textSize="@dimen/textSizeNormal" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="30dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </LinearLayout>
+        </ScrollView>
 
         <club.cred.synth.views.SynthImageButton
             android:id="@+id/fabAddExpense"
-            app:neuButtonRadius="28dp"
+            style="@style/FabButton"
             android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_margin="16dp"
+            android:hapticFeedbackEnabled="true"
             android:padding="16dp"
             android:src="@drawable/ic_add"
             android:tint="@color/colorNegative"
-            app:neuButtonDrawable="@drawable/ic_add"
-            android:layout_height="56dp"
-            android:hapticFeedbackEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:neuButtonDrawable="@drawable/ic_add" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

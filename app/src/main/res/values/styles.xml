@@ -7,6 +7,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="fontFamily">@font/montserrat</item>
     </style>
 
     <style name="SpentWellCard" >
@@ -17,10 +18,10 @@
     <style name="LongButton">
         <!-- Customize your theme here. -->
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textColor">@color/colorButtonText</item>
+        <item name="android:textColor">@color/textColorButton</item>
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
         <item name="neuButtonType">elevated_flat</item>
-        <item name="neuFlatButtonColor">@color/colorAccent</item>
+        <item name="neuFlatButtonColor">@color/colorButtonEnabled</item>
         <item name="android:layout_margin">16dp</item>
         <item name="android:padding">16dp</item>
         <item name="android:textAlignment">center</item>
@@ -32,7 +33,11 @@
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
         <item name="neuLightShadowColor">@color/colorShadowLight</item>
         <item name="neuDarkShadowColor">@color/colorShadowDark</item>
+    </style>
 
+    <style name="FabButton">
+        <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
+        <item name="neuButtonRadius">28dp</item>
     </style>
 
     <style name="AppNameHeader">

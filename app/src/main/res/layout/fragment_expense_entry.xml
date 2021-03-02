@@ -5,24 +5,116 @@
 
     <data>
 
+        <variable
+            name="model"
+            type="com.spentwell.viewmodels.ExpenseEntryViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:clipChildren="false"
         android:layout_height="match_parent"
         android:background="@color/colorBackgroundPrimary"
+        android:clipChildren="false"
+        android:orientation="vertical"
         tools:context=".fragments.ExpenseEntryFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <club.cred.synth.views.PitView
+                style="@style/PitView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etExpenseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@null"
+                android:hint="enter expense name"
+                android:inputType="textCapWords"
+                android:text="@={model.expenseName}"
+                android:textAlignment="center"
+                android:textColorHint="@color/textColorHint"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <club.cred.synth.views.PitView
+                style="@style/PitView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/etExpenseType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@null"
+                android:textAlignment="center"
+                android:textColorHint="@color/textColorHint"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <club.cred.synth.views.PitView
+                style="@style/PitView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@null"
+                android:hint="enter amount spent"
+                android:inputType="numberDecimal"
+                android:text="@={model.expenseAmount}"
+                android:textAlignment="center"
+                android:textColorHint="@color/textColorHint"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <club.cred.synth.views.SynthButton
             android:id="@+id/btProceed"
+            android:layout_width="match_parent"
             style="@style/LongButton"
-            android:layout_height="wrap_content"
             android:text="@string/btn_txt_save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="match_parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:onClick="@{()-> model.onSubmitExpense()}"
+            android:layout_height="wrap_content"
+            app:isButtonActive="@{model.isSaveButtonEnabled}" />
+    </LinearLayout>
 </layout>
