@@ -128,6 +128,9 @@ class EarningsAllocationFragment : Fragment() {
                 // Display the current progress of SeekBar
                 val sumOfAllAllocations = setOverAllProgress()
                 necessities.necessitiesValue.text = "$i"
+                if (b) {
+                    necessities.necessitiesSeekBar.progress = (i/5).toInt() * 5
+                }
                 if (b && (sumOfAllAllocations > 100)) {
                     necessities.necessitiesSeekBar.progress= 100 - (sumOfAllAllocations - i)
                 }
@@ -156,8 +159,11 @@ class EarningsAllocationFragment : Fragment() {
                 // Display the current progress of SeekBar
                 val sumOfAllAllocations = setOverAllProgress()
                 luxuries.luxuriesValue.text = "$i"
+                if (b) {
+                    luxuries.luxuriesSeekBar.progress = (i/5).toInt() * 5
+                }
                 if (b && (sumOfAllAllocations > 100)) {
-                    luxuries.luxuriesSeekBar.progress= 100 - (sumOfAllAllocations - i)
+                    luxuries.luxuriesSeekBar.progress = 100 - (sumOfAllAllocations - i)
                 }
             }
 
@@ -183,8 +189,11 @@ class EarningsAllocationFragment : Fragment() {
                 // Display the current progress of SeekBar
                 val sumOfAllAllocations = setOverAllProgress()
                 savings.savingsValue.text = "$i"
+                if (b) {
+                    savings.savingsSeekBar.progress = (i/5).toInt() * 5
+                }
                 if (b && (sumOfAllAllocations > 100)) {
-                    savings.savingsSeekBar.progress= 100 - (sumOfAllAllocations - i)
+                    savings.savingsSeekBar.progress = 100 - (sumOfAllAllocations - i)
                 }
             }
 
