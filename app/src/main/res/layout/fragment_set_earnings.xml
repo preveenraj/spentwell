@@ -27,6 +27,7 @@
 
        <androidx.constraintlayout.widget.ConstraintLayout
            android:layout_margin="16dp"
+           android:id="@+id/earningsContainer"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintBottom_toTopOf="@+id/btProceed"
