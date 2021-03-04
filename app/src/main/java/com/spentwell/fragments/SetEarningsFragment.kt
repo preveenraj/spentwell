@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.spentwell.R
 import com.spentwell.databinding.FragmentSetEarningsBinding
 import com.spentwell.viewmodels.SetEarningsViewModel
+import kotlinx.android.synthetic.main.fragment_set_earnings.view.*
 
 class SetEarningsFragment : Fragment() {
 
@@ -33,9 +35,14 @@ class SetEarningsFragment : Fragment() {
     }
 
     private fun setViews() {
+        val etEarnings = binding.earningsContainer.etEarnings
         binding.btProceed.setOnClickListener{
-            val navDirections = SetEarningsFragmentDirections.actionSetEarningsFragmentToDashboardFragment()
-            findNavController().navigate(navDirections)
+            if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toInt() > 1000) {
+                val navDirections = SetEarningsFragmentDirections.actionSetEarningsFragmentToDashboardFragment()
+                findNavController().navigate(navDirections)
+            } else {
+                Toast.makeText(requireContext(),"Please enter a valid income per month",Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
