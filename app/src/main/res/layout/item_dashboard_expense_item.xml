@@ -27,6 +27,7 @@
                 tools:text="Food" />
 
             <TextView
+                android:textAlignment="textEnd"
                 android:id="@+id/expenseAmount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
