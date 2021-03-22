@@ -11,7 +11,7 @@ interface ExpenseDao {
     fun getAll(): LiveData<List<Expense>>
 
     @Query("SELECT * FROM expense WHERE type=:type ORDER BY dateTime LIMIT :count")
-    fun getLatestExpensesOfType(type: ExpenseType, count: Int = 5): LiveData<List<Expense>>
+    fun getLatestExpensesOfType(type: ExpenseType, count: Int): List<Expense>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg users: Expense): List<Long>

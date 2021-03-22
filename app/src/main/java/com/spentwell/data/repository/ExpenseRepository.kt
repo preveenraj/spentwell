@@ -15,7 +15,7 @@ class ExpenseRepository(application: Application) {
         return expenseDao.getAll()
     }
 
-    fun getLatestExpensesOfType(type: ExpenseType, count: Int = 5): LiveData<List<Expense>> {
+    fun getLatestExpensesOfType(type: ExpenseType, count: Int): List<Expense> {
         return expenseDao.getLatestExpensesOfType(type = type, count = count)
     }
 
