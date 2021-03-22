@@ -37,6 +37,7 @@ class DashboardAdapter(private val list: MutableList<DashboardViewItem>) :
             val item = list[position] as DashboardViewItem.ExpenseSummaryViewItem
             val binding = holder.binding
             if (item.expenseList.isNullOrEmpty()) {
+                binding.tvExpenseType.text = item.title
                 binding.liEmptyState.visibility = View.VISIBLE
                 binding.recyclerView.visibility = View.GONE
             } else {
