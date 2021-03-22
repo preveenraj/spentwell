@@ -58,7 +58,7 @@ class ExpenseEntryViewModel(application: Application) : AndroidViewModel(applica
     private fun createExpense() {
         expense = Expense(
             name = expenseName.value!!,
-            type = ExpenseType.NECESSITY,
+            type = expenseType.value!!,
             amount = Double.parseDouble(expenseAmount.value!!),
             dateTime = Date()
         )
@@ -72,10 +72,15 @@ class ExpenseEntryViewModel(application: Application) : AndroidViewModel(applica
     fun onSubmissionCompleted() {
         expenseName.value = ""
         expenseAmount.value = ""
+        _expenseType.value = ExpenseType.NECESSITY
         expense = null
         sendButtonValidation()
         _eventSubmitExpense.value = false
         _eventCloseNavigation.value = true
+    }
+
+    fun onCloseNavigationCompleted() {
+        _eventCloseNavigation.value = false
     }
 
     private fun sendButtonValidation() {

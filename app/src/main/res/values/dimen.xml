@@ -3,6 +3,7 @@
     <dimen name="spacingLarge">20dp</dimen>
     <dimen name="spacingMedium">15dp</dimen>
     <dimen name="spacingSmall">10dp</dimen>
+    <dimen name="spacing60">60dp</dimen>
 
     <dimen name="longButtonInset">16dp</dimen>
     <dimen name="longButtonShadowElevation">2dp</dimen>

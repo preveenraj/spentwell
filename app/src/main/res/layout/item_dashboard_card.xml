@@ -41,101 +41,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacingLarge">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    tools:text="Food" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    tools:text="$500" />
-            </LinearLayout>
-
-            <View
+                android:visibility="visible"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="4"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/spacingSmall"
-                android:background="@color/colorDividerPrimary" />
+                tools:listitem="@layout/item_dashboard_expense_item" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/liEmptyState"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvExpenseType">
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:visibility="visible">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    tools:text="Food" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    tools:text="$500" />
+                    android:layout_marginTop="@dimen/spacing60"
+                    android:layout_marginBottom="@dimen/spacing60"
+                    android:text="No expenses to show" />
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/spacingSmall"
-                android:background="@color/colorDividerPrimary" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvExpenseType">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    tools:text="Food" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    tools:text="$500" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/spacingSmall"
-                android:background="@color/colorDividerPrimary" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvExpenseType">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    tools:text="Food" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    tools:text="$500" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/spacingSmall"
-                android:background="@color/colorDividerPrimary" />
 
             <TextView
                 android:layout_width="wrap_content"
