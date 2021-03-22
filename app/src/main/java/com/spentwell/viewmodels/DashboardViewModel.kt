@@ -25,6 +25,10 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     val savings = mutableListOf<Expense>()
 
     init {
+        refreshList()
+    }
+
+    fun refreshList() {
         viewModelScope.launch {
             fetchTopExpensesOfEachCategory(4)
         }
@@ -56,6 +60,9 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
                     numberOfExpensesToFetch
                 )
             viewModelScope.launch {
+                necessities.clear()
+                luxuries.clear()
+                savings.clear()
                 necessities.addAll(fetchedNecessities)
                 luxuries.addAll(fetchedLuxuries)
                 savings.addAll(fetchedSavings)

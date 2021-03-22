@@ -44,6 +44,11 @@ class DashboardFragment : Fragment() {
         setAdapter()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.refreshList()
+    }
+
     private fun setAdapter() {
         adapter = DashboardAdapter(viewModel.list)
         binding.recyclerView.adapter = adapter
