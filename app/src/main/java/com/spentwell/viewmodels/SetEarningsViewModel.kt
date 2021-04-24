@@ -22,8 +22,8 @@ class SetEarningsViewModel : ViewModel() {
         incomePerMonth.observeForever(observer)
     }
 
-    private fun toggleProceedButton(b: Boolean) {
-        _isProceedButtonEnabled.value = b
+    private fun toggleProceedButton(isButtonEnabled: Boolean) {
+        _isProceedButtonEnabled.value = isButtonEnabled
     }
 
     override fun onCleared() {
