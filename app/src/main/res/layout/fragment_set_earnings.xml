@@ -55,6 +55,7 @@
                android:hint="Income Per Month"
                android:inputType="numberDecimal"
                android:textAlignment="center"
+               android:text="@={model.incomePerMonth}"
                android:textColorHint="@color/textColorHint"
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintEnd_toEndOf="parent"

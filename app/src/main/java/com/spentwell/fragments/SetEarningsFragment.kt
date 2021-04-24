@@ -46,12 +46,6 @@ class SetEarningsFragment : Fragment() {
                 Toast.makeText(requireContext(),"Please enter a valid income per month",Toast.LENGTH_SHORT).show()
             }
         }
-
-        binding.incomePerMonth.doOnTextChanged { text, start, count, after ->
-            if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toInt() > 1000) {
-                viewModel.toggleProceedButton(true)
-            }
-        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
