@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="model"
+            type="com.spentwell.viewmodels.EarningsAllocationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -237,6 +239,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/btn_txt_proceed"
+            app:isButtonActive="@{model.isProceedButtonEnabled}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

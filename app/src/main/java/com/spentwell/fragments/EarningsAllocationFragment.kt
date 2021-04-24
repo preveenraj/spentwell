@@ -42,6 +42,7 @@ class EarningsAllocationFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_earnings_allocation, container, false
         )
+        binding.lifecycleOwner = this
         necessities = binding.allocationContainer.necessitiesContainer;
         savings = binding.allocationContainer.savingsContainer;
         luxuries = binding.allocationContainer.luxuriesContainer;
@@ -81,6 +82,7 @@ class EarningsAllocationFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(EarningsAllocationViewModel::class.java)
+        binding.model = viewModel
         allocationPref = requireContext().getSharedPreferences(
             "earningsAllocation",
             Context.MODE_PRIVATE
@@ -99,7 +101,6 @@ class EarningsAllocationFragment : Fragment() {
         val sum = (n+s+l);
         overAll.text = " ${sum}/100"
         val layoutParams = overAllCard!!.layoutParams
-        Log.i("sdfs", sum.toString())
         if(sum == 0) {
             layoutParams.width = 0
         } else {
@@ -108,8 +109,10 @@ class EarningsAllocationFragment : Fragment() {
         }
         overAllCard.layoutParams = layoutParams
         if(sum == 100) {
+            viewModel.toggleProceedButton(true)
             overAllCard.setCardBackgroundColor(requireContext().getColor(R.color.colorPositive))
         } else {
+            viewModel.toggleProceedButton(false)
             overAllCard.setCardBackgroundColor(requireContext().getColor(R.color.colorNegative))
         }
         return sum
