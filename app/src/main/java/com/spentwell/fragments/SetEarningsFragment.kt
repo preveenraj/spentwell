@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.spentwell.R
@@ -19,7 +20,6 @@ class SetEarningsFragment : Fragment() {
     companion object {
         fun newInstance() = SetEarningsFragment()
     }
-
     private lateinit var viewModel: SetEarningsViewModel
     private lateinit var binding: FragmentSetEarningsBinding
 
@@ -30,12 +30,14 @@ class SetEarningsFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_set_earnings, container, false
         )
+        binding.lifecycleOwner = this
+
         setViews()
         return binding.root
     }
 
     private fun setViews() {
-        val etEarnings = binding.earningsContainer.etEarnings
+        val etEarnings = binding.earningsContainer.incomePerMonth
         binding.btProceed.setOnClickListener{
             if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toInt() > 1000) {
                 val navDirections = SetEarningsFragmentDirections.actionSetEarningsFragmentToDashboardFragment()
@@ -44,11 +46,18 @@ class SetEarningsFragment : Fragment() {
                 Toast.makeText(requireContext(),"Please enter a valid income per month",Toast.LENGTH_SHORT).show()
             }
         }
+
+        binding.incomePerMonth.doOnTextChanged { text, start, count, after ->
+            if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toInt() > 1000) {
+                viewModel.toggleProceedButton(true)
+            }
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SetEarningsViewModel::class.java)
+        binding.model = viewModel
         // TODO: Use the ViewModel
     }
 

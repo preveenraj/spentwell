@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="model"
+            type="com.spentwell.viewmodels.SetEarningsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,26 +45,28 @@
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintBottom_toBottomOf="parent" />
+
            <EditText
-               app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintBottom_toBottomOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintEnd_toEndOf="parent"
-               android:id="@+id/etEarnings"
-               android:layout_margin="16dp"
-               android:textColorHint="@color/textColorHint"
-               android:hint="Earnings"
+               android:id="@+id/incomePerMonth"
                android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="16dp"
+               android:background="@null"
+               android:hint="Income Per Month"
                android:inputType="numberDecimal"
                android:textAlignment="center"
-               android:background="@null"
-               android:layout_height="wrap_content"/>
+               android:textColorHint="@color/textColorHint"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
        </androidx.constraintlayout.widget.ConstraintLayout>
         <club.cred.synth.views.SynthButton
             android:id="@+id/btProceed"
             style="@style/LongButton"
             android:layout_height="wrap_content"
             android:text="@string/btn_txt_proceed"
+            app:isButtonActive="@{model.isProceedButtonEnabled}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
