@@ -36,9 +36,21 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
 
     private fun clearAndRefreshList() {
         list.clear()
-        addToList(DashboardViewItem.ExpenseSummaryViewItem("Necessities", necessities))
-        addToList(DashboardViewItem.ExpenseSummaryViewItem("Savings", savings))
-        addToList(DashboardViewItem.ExpenseSummaryViewItem("Luxuries", luxuries))
+        addToList(
+            DashboardViewItem.ExpenseSummaryViewItem(
+                "Necessities",
+                necessities,
+                ExpenseType.NECESSITY
+            )
+        )
+        addToList(DashboardViewItem.ExpenseSummaryViewItem("Savings", savings, ExpenseType.SAVINGS))
+        addToList(
+            DashboardViewItem.ExpenseSummaryViewItem(
+                "Luxuries",
+                luxuries,
+                ExpenseType.LUXURY
+            )
+        )
         _refreshList.value = true
     }
 

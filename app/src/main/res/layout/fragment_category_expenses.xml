@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.spentwell.viewmodels.CategoryExpensesViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorBackgroundPrimary"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".fragments.CategoryExpensesFragment">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacingLarge"
+            android:textSize="@dimen/textSizeLarge"
+            android:id="@+id/expenseType"
+            android:layout_width="match_parent"
+            android:textStyle="bold" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <club.cred.synth.views.PitView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/spacingSmall"
+                android:layout_marginTop="@dimen/spacingMedium"
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:layout_marginBottom="@dimen/spacingMedium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/spacingSmall"
+                android:layout_marginTop="@dimen/spacingMedium"
+                android:layout_marginRight="@dimen/spacingSmall"
+                android:layout_marginBottom="@dimen/spacingMedium"
+                android:clipToPadding="false"
+                android:padding="@dimen/spacingLarge"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_category_expense_item" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>
