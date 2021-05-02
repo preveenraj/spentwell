@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.spentwell.R
 import com.spentwell.adapters.DashboardAdapter
+import com.spentwell.data.models.ExpenseType
 import com.spentwell.databinding.FragmentDashboardBinding
 import com.spentwell.viewmodels.DashboardViewModel
 
@@ -50,7 +50,15 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        adapter = DashboardAdapter(viewModel.list)
+        val showMoreExpensesHandler = fun(expenseType: ExpenseType) {
+            val navDirections =
+                DashboardFragmentDirections.actionDashboardFragmentToCategoryExpensesFragment(
+                    expenseType
+                )
+            findNavController().navigate(navDirections)
+        }
+
+        adapter = DashboardAdapter(viewModel.list, showMoreExpensesHandler)
         binding.recyclerView.adapter = adapter
     }
 
@@ -62,7 +70,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.refreshList.observe(viewLifecycleOwner, Observer {
+        viewModel.refreshList.observe(viewLifecycleOwner, {
             if (it) {
                 adapter?.notifyDataSetChanged()
                 viewModel.onListRefreshed()

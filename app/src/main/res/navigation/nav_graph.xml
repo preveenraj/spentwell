@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_categoryExpensesFragment"
+            app:destination="@id/categoryExpensesFragment" />
     </fragment>
     <fragment
         android:id="@+id/setEarningsFragment"
@@ -59,4 +62,12 @@
         android:name="com.spentwell.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/categoryExpensesFragment"
+        android:name="com.spentwell.fragments.CategoryExpensesFragment"
+        android:label="CategoryExpensesFragment">
+        <argument
+            android:name="expenseType"
+            app:argType="com.spentwell.data.models.ExpenseType" />
+    </fragment>
 </navigation>

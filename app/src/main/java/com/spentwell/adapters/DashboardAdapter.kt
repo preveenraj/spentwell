@@ -6,11 +6,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.spentwell.R
+import com.spentwell.data.models.ExpenseType
 import com.spentwell.databinding.ItemDashboardCardBinding
 import com.spentwell.databinding.ItemEmptyBinding
 import com.spentwell.listviewitem.DashboardViewItem
 
-class DashboardAdapter(private val list: MutableList<DashboardViewItem>) :
+class DashboardAdapter(
+    private val list: MutableList<DashboardViewItem>,
+    private val showMoreHandler: (ExpenseType) -> (Unit)
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         const val EXPENSE_SUMMARY_VIEW = 1
@@ -47,6 +51,7 @@ class DashboardAdapter(private val list: MutableList<DashboardViewItem>) :
                 val adapter = DashboardExpenseAdapter(item.expenseList)
                 binding.recyclerView.adapter = adapter
             }
+            binding.tvSeeMore.setOnClickListener { showMoreHandler(item.expenseType) }
         }
     }
 

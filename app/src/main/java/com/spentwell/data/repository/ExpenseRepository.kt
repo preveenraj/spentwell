@@ -15,7 +15,11 @@ class ExpenseRepository(application: Application) {
         return expenseDao.getAll()
     }
 
-    fun getLatestExpensesOfType(type: ExpenseType, count: Int): List<Expense> {
+    suspend fun getAllExpensesOfType(type: ExpenseType): List<Expense> {
+        return expenseDao.getAllExpensesOfType(type = type)
+    }
+
+    suspend fun getLatestExpensesOfType(type: ExpenseType, count: Int): List<Expense> {
         return expenseDao.getLatestExpensesOfType(type = type, count = count)
     }
 
