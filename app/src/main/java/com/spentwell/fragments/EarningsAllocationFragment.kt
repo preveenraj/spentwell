@@ -1,9 +1,7 @@
 package com.spentwell.fragments
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.spentwell.R
 import com.spentwell.databinding.FragmentEarningsAllocationBinding
+import com.spentwell.utils.SharedPrefUtils
 import com.spentwell.viewmodels.EarningsAllocationViewModel
 import kotlinx.android.synthetic.main.fragment_earnings_allocation.view.*
 
@@ -60,12 +59,13 @@ class EarningsAllocationFragment : Fragment() {
 
             if( (necessitiesValue + savingsValue + luxuriesValue) == 100 ) {
                 val editor: SharedPreferences.Editor = allocationPref.edit()
-                editor.putInt("necessities", necessitiesValue)
-                editor.putInt("savings", savingsValue)
-                editor.putInt("luxuries", luxuriesValue)
+                editor.putInt(SharedPrefUtils.SHARED_PREF_KEY_NECESSITIES, necessitiesValue)
+                editor.putInt(SharedPrefUtils.SHARED_PREFS_KEY_SAVINGS, savingsValue)
+                editor.putInt(SharedPrefUtils.SHARED_PREFS_KEY_LUXURIES, luxuriesValue)
                 editor.commit()
 
-                val navDirections = EarningsAllocationFragmentDirections.actionEarningsAllocationFragmentToSetEarningsFragment()
+                val navDirections =
+                    EarningsAllocationFragmentDirections.actionEarningsAllocationFragmentToSetEarningsFragment()
                 findNavController().navigate(navDirections)
             } else {
                 Toast.makeText(
@@ -83,10 +83,7 @@ class EarningsAllocationFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(EarningsAllocationViewModel::class.java)
         binding.model = viewModel
-        allocationPref = requireContext().getSharedPreferences(
-            "earningsAllocation",
-            Context.MODE_PRIVATE
-        );
+        allocationPref = SharedPrefUtils.getSharedPreferences(requireContext())
         setSeekBars()
 
     }
@@ -105,7 +102,8 @@ class EarningsAllocationFragment : Fragment() {
             layoutParams.width = 0
         } else {
             overAllCard.visibility = View.VISIBLE
-            layoutParams.width = (sum * 2 * requireContext().resources.displayMetrics.density).toInt();
+            layoutParams.width =
+                (sum * 2 * requireContext().resources.displayMetrics.density).toInt()
         }
         overAllCard.layoutParams = layoutParams
         if(sum == 100) {
