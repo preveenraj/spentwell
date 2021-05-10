@@ -85,7 +85,7 @@ class DashboardFragment : Fragment() {
         viewModel.expensesForCurrentMonth.observe(viewLifecycleOwner, { expensesForCurrentMonth ->
             val balance = viewModel.earnings - expensesForCurrentMonth
             val displayText = "${AppUtils.getFormattedCurrencyString(balance)}/${
-                AppUtils.getFormattedCurrencyString(viewModel.earnings.toDouble())
+                "%.2f".format(viewModel.earnings.toDouble())
             }"
             setGraphValue(balance, viewModel.earnings.toDouble())
             binding.tvExpenseToEarnings.text = displayText
