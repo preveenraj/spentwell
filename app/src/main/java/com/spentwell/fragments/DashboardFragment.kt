@@ -12,6 +12,7 @@ import com.spentwell.R
 import com.spentwell.adapters.DashboardAdapter
 import com.spentwell.data.models.ExpenseType
 import com.spentwell.databinding.FragmentDashboardBinding
+import com.spentwell.utils.AppUtils
 import com.spentwell.viewmodels.DashboardViewModel
 
 class DashboardFragment : Fragment() {
@@ -78,7 +79,10 @@ class DashboardFragment : Fragment() {
         })
 
         viewModel.expensesForCurrentMonth.observe(viewLifecycleOwner, { expensesForCurrentMonth ->
-            val displayText = "${expensesForCurrentMonth}/${viewModel.earnings}"
+            val balance = viewModel.earnings - expensesForCurrentMonth
+            val displayText = "${AppUtils.getFormattedCurrencyString(balance)}/${
+                AppUtils.getFormattedCurrencyString(viewModel.earnings.toDouble())
+            }"
             binding.tvExpenseToEarnings.text = displayText
         })
     }

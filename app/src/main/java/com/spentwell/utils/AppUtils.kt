@@ -1,6 +1,8 @@
 package com.spentwell.utils
 
 import android.content.Context
+import java.text.NumberFormat
+import java.util.*
 
 object AppUtils {
     fun isEarningsSet(context: Context): Boolean {
@@ -17,5 +19,12 @@ object AppUtils {
         val necessities = SharedPrefUtils.getSharedPreferences(context)
             .getInt(SharedPrefUtils.SHARED_PREF_KEY_NECESSITIES, 0)
         return luxuries != 0 && savings != 0 && necessities != 0
+    }
+
+    fun getFormattedCurrencyString(amount: Double): String {
+        val format: NumberFormat = NumberFormat.getCurrencyInstance()
+        format.maximumFractionDigits = 2
+        format.currency = Currency.getInstance("INR")
+        return format.format(amount)
     }
 }
