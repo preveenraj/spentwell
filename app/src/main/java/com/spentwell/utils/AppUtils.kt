@@ -5,8 +5,8 @@ import android.content.Context
 object AppUtils {
     fun isEarningsSet(context: Context): Boolean {
         val earnings = SharedPrefUtils.getSharedPreferences(context)
-            .getInt(SharedPrefUtils.SHARED_PREFS_KEY_EARNINGS, 0)
-        return earnings != 0
+            .getFloat(SharedPrefUtils.SHARED_PREFS_KEY_EARNINGS, 0.0f)
+        return earnings != 0.0f
     }
 
     fun isEarningsAllocated(context: Context): Boolean {

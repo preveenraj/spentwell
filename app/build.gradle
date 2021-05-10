@@ -88,4 +88,7 @@ dependencies {
     releaseImplementation 'com.facebook.flipper:flipper-noop:0.75.1'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
 
+    implementation 'joda-time:joda-time:2.10.10'
+
+
 }

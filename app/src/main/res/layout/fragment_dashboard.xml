@@ -76,10 +76,10 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <TextView
+                            android:id="@+id/tvExpenseToEarnings"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacingSmall"
-                            android:text="32,000/50,000"
                             android:textAlignment="textEnd"
                             android:textSize="@dimen/textSizeNormal" />
 

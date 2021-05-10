@@ -76,6 +76,11 @@ class DashboardFragment : Fragment() {
                 viewModel.onListRefreshed()
             }
         })
+
+        viewModel.expensesForCurrentMonth.observe(viewLifecycleOwner, { expensesForCurrentMonth ->
+            val displayText = "${expensesForCurrentMonth}/${viewModel.earnings}"
+            binding.tvExpenseToEarnings.text = displayText
+        })
     }
 
 }
