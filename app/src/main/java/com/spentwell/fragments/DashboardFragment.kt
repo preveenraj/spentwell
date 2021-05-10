@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,9 +14,12 @@ import com.spentwell.adapters.DashboardAdapter
 import com.spentwell.data.models.ExpenseType
 import com.spentwell.databinding.FragmentDashboardBinding
 import com.spentwell.utils.AppUtils
+import com.spentwell.utils.AppUtils.convertDpToPixels
 import com.spentwell.viewmodels.DashboardViewModel
+import kotlin.math.ceil
 
 class DashboardFragment : Fragment() {
+    private val TAG = "SpentWell"
 
     companion object {
         fun newInstance() = DashboardFragment()
@@ -83,8 +87,18 @@ class DashboardFragment : Fragment() {
             val displayText = "${AppUtils.getFormattedCurrencyString(balance)}/${
                 AppUtils.getFormattedCurrencyString(viewModel.earnings.toDouble())
             }"
+            setGraphValue(balance, viewModel.earnings.toDouble())
             binding.tvExpenseToEarnings.text = displayText
         })
+    }
+
+    private fun setGraphValue(balance: Double, earnings: Double) {
+        val balancePercentage = (balance / earnings)
+        val width = binding.pvSpendingGraphBackground.width * balancePercentage
+        binding.cvSpendingGraph.layoutParams = ConstraintLayout.LayoutParams(
+            ceil(width).toInt(),
+            convertDpToPixels(8.0f, resources).toInt()
+        )
     }
 
 }

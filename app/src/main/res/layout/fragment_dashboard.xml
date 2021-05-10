@@ -57,6 +57,7 @@
                             android:clipChildren="false">
 
                             <club.cred.synth.views.PitView
+                                android:id="@+id/pvSpendingGraphBackground"
                                 android:layout_width="match_parent"
                                 android:layout_height="10dp"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,12 +66,15 @@
                                 app:pitColor="@color/colorBackgroundPrimary" />
 
                             <androidx.cardview.widget.CardView
-                                android:layout_width="50dp"
+                                android:id="@+id/cvSpendingGraph"
+                                android:layout_width="wrap_content"
                                 android:layout_height="8dp"
                                 app:cardBackgroundColor="@color/colorPositive"
                                 app:cardCornerRadius="4dp"
+                                app:layout_constraintHorizontal_bias="1"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>

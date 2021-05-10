@@ -1,6 +1,8 @@
 package com.spentwell.utils
 
 import android.content.Context
+import android.content.res.Resources
+import android.util.TypedValue
 import java.text.NumberFormat
 import java.util.*
 
@@ -26,5 +28,14 @@ object AppUtils {
         format.maximumFractionDigits = 2
         format.currency = Currency.getInstance("INR")
         return format.format(amount)
+    }
+
+    fun convertDpToPixels(dp: Float, resources: Resources): Float {
+        val px = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp,
+            resources.displayMetrics
+        )
+        return px
     }
 }
