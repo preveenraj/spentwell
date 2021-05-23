@@ -9,6 +9,7 @@ import com.spentwell.data.models.Expense
 import com.spentwell.data.models.ExpenseType
 import com.spentwell.data.repository.ExpenseRepository
 import com.spentwell.listviewitem.DashboardViewItem
+import com.spentwell.utils.SharedPrefUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,13 +25,23 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     val luxuries = mutableListOf<Expense>()
     val savings = mutableListOf<Expense>()
 
+    var earnings: Float = 0.0f
+
+    private val _expensesForCurrentMonth = MutableLiveData<Double>()
+    val expensesForCurrentMonth: LiveData<Double>
+        get() = _expensesForCurrentMonth
+
     init {
         refreshList()
+        earnings = SharedPrefUtils.getSharedPreferences(application)
+            .getFloat(SharedPrefUtils.SHARED_PREFS_KEY_EARNINGS, 0.0f)
+
     }
 
     fun refreshList() {
         viewModelScope.launch {
             fetchTopExpensesOfEachCategory(4)
+            fetchCurrentMonthExpenses()
         }
     }
 
@@ -81,6 +92,16 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
                 clearAndRefreshList()
             }
 
+        }
+    }
+
+    private suspend fun fetchCurrentMonthExpenses() {
+        withContext(Dispatchers.IO) {
+            val currentMonthExpenses =
+                ExpenseRepository(application = getApplication()).getTotalExpensesOfCurrentMonth()
+            viewModelScope.launch {
+                _expensesForCurrentMonth.value = currentMonthExpenses
+            }
         }
     }
 

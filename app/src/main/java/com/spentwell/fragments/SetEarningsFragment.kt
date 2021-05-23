@@ -39,15 +39,20 @@ class SetEarningsFragment : Fragment() {
     private fun setViews() {
         val etEarnings = binding.earningsContainer.incomePerMonth
         binding.btProceed.setOnClickListener{
-            if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toInt() > 1000) {
-                SharedPrefUtils.getSharedPreferences(requireContext()).edit().putInt(
+            if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toFloat() > 1000.0f) {
+                SharedPrefUtils.getSharedPreferences(requireContext()).edit().putFloat(
                     SharedPrefUtils.SHARED_PREFS_KEY_EARNINGS,
-                    etEarnings.text.toString().toInt()
+                    etEarnings.text.toString().toFloat()
                 ).commit()
-                val navDirections = SetEarningsFragmentDirections.actionSetEarningsFragmentToDashboardFragment()
+                val navDirections =
+                    SetEarningsFragmentDirections.actionSetEarningsFragmentToDashboardFragment()
                 findNavController().navigate(navDirections)
             } else {
-                Toast.makeText(requireContext(),"Please enter a valid income per month",Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Please enter a valid income per month",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.spentwell.R
 import com.spentwell.data.models.Expense
 import com.spentwell.databinding.ItemCategoryExpenseItemBinding
-import java.text.NumberFormat
-import java.util.*
+import com.spentwell.utils.AppUtils
 
 class CategoryExpenseAdapter(private val list: List<Expense>) :
     RecyclerView.Adapter<CategoryExpenseAdapter.CategoryExpenseViewHolder>() {
@@ -24,10 +23,7 @@ class CategoryExpenseAdapter(private val list: List<Expense>) :
         val expense = list[position]
         val binding = holder.binding
         binding.expenseTitle.text = expense.name
-        val format: NumberFormat = NumberFormat.getCurrencyInstance()
-        format.maximumFractionDigits = 2
-        format.currency = Currency.getInstance("INR")
-        binding.expenseAmount.text = format.format(expense.amount)
+        binding.expenseAmount.text = AppUtils.getFormattedCurrencyString(expense.amount)
     }
 
     override fun getItemCount(): Int {
