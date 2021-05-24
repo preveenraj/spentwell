@@ -1,10 +1,14 @@
 package com.spentwell.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -38,12 +42,24 @@ class SetEarningsFragment : Fragment() {
 
     private fun setViews() {
         val etEarnings = binding.earningsContainer.incomePerMonth
+
+        etEarnings.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                // Hide the keyboard.
+                val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v.windowToken, 0)
+                return@OnKeyListener true
+            }
+            false
+        })
+
         binding.btProceed.setOnClickListener{
             if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toFloat() > 1000.0f) {
                 SharedPrefUtils.getSharedPreferences(requireContext()).edit().putFloat(
                     SharedPrefUtils.SHARED_PREFS_KEY_EARNINGS,
                     etEarnings.text.toString().toFloat()
-                ).commit()
+                ).apply()
+
                 val navDirections =
                     SetEarningsFragmentDirections.actionSetEarningsFragmentToDashboardFragment()
                 findNavController().navigate(navDirections)
