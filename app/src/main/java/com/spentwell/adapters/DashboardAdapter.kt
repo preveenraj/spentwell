@@ -52,16 +52,17 @@ class DashboardAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         if (holder is ExpenseCategoryViewHolder) {
-            val totalAllocationAmount = when(position) {
-                0 -> SharedPrefUtils.getSharedPreferences(context)
+            val item = list[position] as DashboardViewItem.ExpenseSummaryViewItem
+            Log.i(TAG, "onBindViewHolder: $item.expenseType")
+            val totalAllocationAmount = when(item.expenseType) {
+                ExpenseType.LUXURY -> SharedPrefUtils.getSharedPreferences(context)
                     .getInt(SharedPrefUtils.SHARED_PREFS_KEY_LUXURIES, 0)
-                1 -> SharedPrefUtils.getSharedPreferences(context)
+                ExpenseType.SAVINGS -> SharedPrefUtils.getSharedPreferences(context)
                     .getInt(SharedPrefUtils.SHARED_PREFS_KEY_SAVINGS, 0)
-                2-> SharedPrefUtils.getSharedPreferences(context)
+                ExpenseType.NECESSITY -> SharedPrefUtils.getSharedPreferences(context)
                     .getInt(SharedPrefUtils.SHARED_PREF_KEY_NECESSITIES, 0)
                 else -> 0
             }
-            val item = list[position] as DashboardViewItem.ExpenseSummaryViewItem
             val binding = holder.binding
             var currentSpendingInCategory: Double = 0.0
             if (item.expenseList.isNullOrEmpty()) {
