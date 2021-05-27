@@ -1,10 +1,16 @@
 package com.spentwell.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -22,6 +28,7 @@ class SetEarningsFragment : Fragment() {
     }
     private lateinit var viewModel: SetEarningsViewModel
     private lateinit var binding: FragmentSetEarningsBinding
+    private lateinit var etEarnings: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,29 +38,43 @@ class SetEarningsFragment : Fragment() {
             inflater, R.layout.fragment_set_earnings, container, false
         )
         binding.lifecycleOwner = this
+        etEarnings = binding.earningsContainer.incomePerMonth
 
         setViews()
         return binding.root
     }
 
     private fun setViews() {
-        val etEarnings = binding.earningsContainer.incomePerMonth
-        binding.btProceed.setOnClickListener{
-            if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toFloat() > 1000.0f) {
-                SharedPrefUtils.getSharedPreferences(requireContext()).edit().putFloat(
-                    SharedPrefUtils.SHARED_PREFS_KEY_EARNINGS,
-                    etEarnings.text.toString().toFloat()
-                ).commit()
-                val navDirections =
-                    SetEarningsFragmentDirections.actionSetEarningsFragmentToDashboardFragment()
-                findNavController().navigate(navDirections)
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Please enter a valid income per month",
-                    Toast.LENGTH_SHORT
-                ).show()
+        etEarnings.setOnEditorActionListener { v, actionId, event ->
+            return@setOnEditorActionListener when (actionId) {
+                EditorInfo.IME_ACTION_DONE -> {
+                    saveAndProceed()
+                    true
+                }
+                else -> false
             }
+        }
+        binding.btProceed.setOnClickListener{
+          saveAndProceed()
+        }
+    }
+
+    private fun saveAndProceed() {
+        if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toFloat() > 1000.0f) {
+            SharedPrefUtils.getSharedPreferences(requireContext()).edit().putFloat(
+                SharedPrefUtils.SHARED_PREFS_KEY_EARNINGS,
+                etEarnings.text.toString().toFloat()
+            ).apply()
+
+            val navDirections =
+                SetEarningsFragmentDirections.actionSetEarningsFragmentToDashboardFragment()
+            findNavController().navigate(navDirections)
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "Please enter a valid income per month",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
