@@ -7,7 +7,9 @@ sealed class DashboardViewItem() {
     data class ExpenseSummaryViewItem(
         val title: String,
         val expenseList: List<Expense>,
-        val expenseType: ExpenseType
+        val expenseType: ExpenseType,
+//        val TotalAllocation: Number,
+//        val CurrentSpendings: Number
     ) :
         DashboardViewItem()
 }
