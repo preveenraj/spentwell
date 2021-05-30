@@ -83,6 +83,7 @@
                             android:id="@+id/tvExpenseToEarnings"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            tools:text="₹ 12000 / 14000"
                             android:layout_marginTop="@dimen/spacingSmall"
                             android:textAlignment="textEnd"
                             android:textSize="@dimen/textSizeNormal" />

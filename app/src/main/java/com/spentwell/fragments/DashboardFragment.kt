@@ -95,6 +95,14 @@ class DashboardFragment : Fragment() {
     private fun setGraphValue(balance: Double, earnings: Double) {
         val balancePercentage = (balance / earnings)
         val width = binding.pvSpendingGraphBackground.width * balancePercentage
+       binding.apply {
+           when ((balancePercentage * 100).toInt()) {
+               in 0..30 -> cvSpendingGraph.setCardBackgroundColor(requireContext().getColor(R.color.colorNegative))
+               in 30..70 -> cvSpendingGraph.setCardBackgroundColor(requireContext().getColor(R.color.colorNeutral))
+               in 70..99 -> cvSpendingGraph.setCardBackgroundColor(requireContext().getColor(R.color.colorPositive))
+               in 100..100 -> cvSpendingGraph.setCardBackgroundColor(requireContext().getColor(R.color.colorSuperb))
+           }
+       }
         binding.cvSpendingGraph.layoutParams = ConstraintLayout.LayoutParams(
             ceil(width).toInt(),
             convertDpToPixels(8.0f, resources).toInt()

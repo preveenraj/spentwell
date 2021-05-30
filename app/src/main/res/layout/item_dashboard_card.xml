@@ -50,7 +50,7 @@
                   android:layout_height="wrap_content" />
 
               <LinearLayout
-                  android:layout_width="@dimen/card_progress_width"
+                  android:layout_width="match_parent"
                   android:layout_weight="1"
                   android:layout_height="match_parent"
                   android:orientation="vertical"
@@ -60,7 +60,7 @@
                   <TextView
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:text="12,000/14,000"
+                      tools:text="12,000/14,000"
                       android:id="@+id/allocationRemainingTextByCategory"
                       android:textAlignment="textEnd"
                       android:textSize="@dimen/textSizeSmall"
@@ -68,12 +68,14 @@
                       />
 
                   <androidx.constraintlayout.widget.ConstraintLayout
-                      android:layout_width="match_parent"
+                      android:layout_width="@dimen/card_progress_width"
+                      android:layout_gravity="end"
                       android:layout_height="wrap_content"
                       android:clipChildren="false">
 
                       <club.cred.synth.views.PitView
-                          android:layout_width="160dp"
+                          android:id="@+id/pvSpendingGraphBackground"
+                          android:layout_width="match_parent"
                           android:layout_height="5dp"
                           app:layout_constraintEnd_toEndOf="parent"
                           app:layout_constraintStart_toStartOf="parent"
@@ -81,13 +83,15 @@
                           app:pitColor="@color/colorBackgroundPrimary" />
 
                       <androidx.cardview.widget.CardView
-                          android:id="@+id/progressCardByCategory"
-                          android:layout_width="50dp"
+                          android:id="@+id/cvSpendingGraph"
+                          android:layout_width="0dp"
                           android:layout_height="5dp"
                           app:cardBackgroundColor="@color/colorPositive"
                           app:cardCornerRadius="4dp"
                           app:layout_constraintBottom_toBottomOf="parent"
                           app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintHorizontal_bias="1.0"
+                          app:layout_constraintStart_toStartOf="parent"
                           app:layout_constraintTop_toTopOf="parent" />
 
                   </androidx.constraintlayout.widget.ConstraintLayout>
