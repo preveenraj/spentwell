@@ -30,6 +30,14 @@ interface ExpenseDao {
         type: ExpenseType
     ): List<Expense>
 
+    @Query("SELECT * FROM expense WHERE dateTime>:startDate AND dateTime<:endDate AND type=:type ORDER BY dateTime LIMIT :count")
+    suspend fun getAllExpensesForDateRangeAndType(
+        startDate: Date,
+        endDate: Date,
+        type: ExpenseType,
+        count: Int
+    ): List<Expense>
+
     @Delete
     fun delete(user: Expense)
 
