@@ -21,8 +21,24 @@ class ExpenseRepository(application: Application) {
         return expenseDao.getAllExpensesOfType(type = type)
     }
 
-    suspend fun getLatestExpensesOfType(type: ExpenseType, count: Int): List<Expense> {
-        return expenseDao.getLatestExpensesOfType(type = type, count = count)
+    suspend fun getLatestExpensesOfType(
+        type: ExpenseType,
+        count: Int,
+        limitToCurrentMonth: Boolean = false
+    ): List<Expense> {
+        return if (limitToCurrentMonth) {
+            val today: LocalDate = LocalDate.now()
+            val firstDayOfMonth = today.withDayOfMonth(1).toDate()
+            val lastDayOfMonth = LocalDate().plusMonths(1).withDayOfMonth(1).minusDays(1).toDate()
+            expenseDao.getAllExpensesForDateRangeAndType(
+                type = type,
+                startDate = firstDayOfMonth,
+                endDate = lastDayOfMonth,
+                count = count
+            )
+        } else {
+            expenseDao.getLatestExpensesOfType(type = type, count = count)
+        }
     }
 
     suspend fun getTotalExpensesOfCurrentMonth(): Double {

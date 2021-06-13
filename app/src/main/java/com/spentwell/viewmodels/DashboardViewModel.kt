@@ -70,17 +70,20 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
             val fetchedNecessities =
                 ExpenseRepository(application = getApplication()).getLatestExpensesOfType(
                     ExpenseType.NECESSITY,
-                    numberOfExpensesToFetch
+                    numberOfExpensesToFetch,
+                    true
                 )
             val fetchedSavings =
                 ExpenseRepository(application = getApplication()).getLatestExpensesOfType(
                     ExpenseType.SAVINGS,
-                    numberOfExpensesToFetch
+                    numberOfExpensesToFetch,
+                    true
                 )
             val fetchedLuxuries =
                 ExpenseRepository(application = getApplication()).getLatestExpensesOfType(
                     ExpenseType.LUXURY,
-                    numberOfExpensesToFetch
+                    numberOfExpensesToFetch,
+                    true
                 )
             viewModelScope.launch {
                 necessities.clear()
