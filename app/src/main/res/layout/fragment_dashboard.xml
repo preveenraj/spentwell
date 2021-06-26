@@ -105,12 +105,22 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <!-- shadow above scrolltop-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/dashboard_header"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:elevation="10dp"
+                    ></LinearLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:clipChildren="false"
                     android:clipToPadding="false"
@@ -118,9 +128,12 @@
                     android:paddingTop="30dp"
                     android:paddingBottom="30dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:itemCount="5"
                     tools:listitem="@layout/item_dashboard_card" />
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
         <club.cred.synth.views.SynthImageButton
