@@ -40,6 +40,12 @@
         <item name="neuButtonRadius">28dp</item>
     </style>
 
+    <style name="SettingsButton">
+        <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
+        <item name="neuButtonRadius">36dp</item>
+        <item name="neuButtonType">elevated_flat</item>
+    </style>
+
     <style name="AppNameHeader">
         <!-- Customize your theme here. -->
         <item name="android:textSize">@dimen/textSizeAppName</item>

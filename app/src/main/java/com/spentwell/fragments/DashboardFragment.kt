@@ -45,6 +45,11 @@ class DashboardFragment : Fragment() {
                 DashboardFragmentDirections.actionDashboardFragmentToExpenseEntryFragment()
             findNavController().navigate(navDirections)
         }
+        binding.settingsButton.setOnClickListener {
+            val navDirections =
+                DashboardFragmentDirections.actionDashboardFragmentToExpenseEntryFragment()
+            findNavController().navigate(navDirections)
+        }
 
         setAdapter()
     }
