@@ -12,103 +12,87 @@
         android:layout_height="match_parent"
         android:background="@color/colorBackgroundPrimary"
         android:clipChildren="false"
+        android:orientation="vertical"
         tools:context=".fragments.DashboardFragment">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_margin="@dimen/spacingLarge">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SW"
+                    android:textSize="@dimen/textSizeAppName" />
 
                 <LinearLayout
-                    android:id="@+id/linearLayout"
-
-                    android:layout_margin="@dimen/spacingLarge"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="@dimen/spacingLarge"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="false">
+
+                        <club.cred.synth.views.PitView
+                            android:id="@+id/pvSpendingGraphBackground"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:pitColor="@color/colorBackgroundPrimary" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvSpendingGraph"
+                            android:layout_width="wrap_content"
+                            android:layout_height="8dp"
+                            app:cardBackgroundColor="@color/colorPositive"
+                            app:cardCornerRadius="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tvExpenseToEarnings"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="SW"
-                        android:textSize="@dimen/textSizeAppName" />
+                        android:layout_marginTop="@dimen/spacingSmall"
+                        android:textAlignment="textEnd"
+                        android:textSize="@dimen/textSizeNormal"
+                        tools:text="₹ 12000 / 14000" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="@dimen/spacingLarge"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:clipChildren="false">
-
-                            <club.cred.synth.views.PitView
-                                android:id="@+id/pvSpendingGraphBackground"
-                                android:layout_width="match_parent"
-                                android:layout_height="10dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:pitColor="@color/colorBackgroundPrimary" />
-
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/cvSpendingGraph"
-                                android:layout_width="wrap_content"
-                                android:layout_height="8dp"
-                                app:cardBackgroundColor="@color/colorPositive"
-                                app:cardCornerRadius="4dp"
-                                app:layout_constraintHorizontal_bias="1"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <TextView
-                            android:id="@+id/tvExpenseToEarnings"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:text="₹ 12000 / 14000"
-                            android:layout_marginTop="@dimen/spacingSmall"
-                            android:textAlignment="textEnd"
-                            android:textSize="@dimen/textSizeNormal" />
-
-                    </LinearLayout>
                 </LinearLayout>
+            </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:nestedScrollingEnabled="false"
-                    android:paddingTop="30dp"
-                    android:paddingBottom="30dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                    tools:itemCount="5"
-                    tools:listitem="@layout/item_dashboard_card" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:paddingTop="30dp"
+                android:paddingBottom="30dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_dashboard_card" />
+        </LinearLayout>
 
         <club.cred.synth.views.SynthImageButton
             android:id="@+id/fabAddExpense"
