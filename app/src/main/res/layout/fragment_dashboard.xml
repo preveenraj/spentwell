@@ -18,7 +18,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipChildren="false"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"
+                    android:text="SW"
+                    android:textSize="@dimen/textSizeAppName" />
+
+                <club.cred.synth.views.SynthImageButton
+                    android:id="@+id/settings_button"
+                    style="@style/SettingsButton"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_margin="16dp"
+                    android:hapticFeedbackEnabled="true"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_settings_icon"
+                    android:tint="@color/colorUtitlyButton"
+                    app:neuButtonDrawable="@drawable/ic_settings_icon" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -26,11 +56,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacingLarge">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SW"
-                    android:textSize="@dimen/textSizeAppName" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -80,18 +105,22 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:nestedScrollingEnabled="false"
-                android:paddingTop="30dp"
-                android:paddingBottom="30dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="5"
-                tools:listitem="@layout/item_dashboard_card" />
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="30dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/item_dashboard_card" />
+            </ScrollView>
         </LinearLayout>
 
         <club.cred.synth.views.SynthImageButton

@@ -27,6 +27,10 @@
     <color name="colorButtonEnabled">@color/colorAccent</color>
     <color name="colorButtonDisabled">#c6c6c6</color>
 
+    <!--  UTILITY BUTTON  -->
+    <color name="colorUtitlyButton">#7f8c8d</color>
+
+
     <!--  DIVIDER  -->
     <color name="colorDividerPrimary">@color/textColorHint</color>
 
