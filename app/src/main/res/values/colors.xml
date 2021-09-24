@@ -19,6 +19,7 @@
 
     <!--  TEXT  -->
     <color name="textColorPrimary">#E7E8EC</color>
+    <color name="textColorSecondary">#BCBEC8</color>
     <color name="textColorButton">#C9FFFFFF</color>
     <color name="textColorAccent">@color/colorAccent</color>
     <color name="textColorHint">#66FFFFFF</color>

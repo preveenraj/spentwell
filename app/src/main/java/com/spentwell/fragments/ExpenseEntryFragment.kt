@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -50,11 +49,9 @@ class ExpenseEntryFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     private fun setViews() {
-        val spinnerAdapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, expenseTypes)
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spExpenseType.onItemSelectedListener = this
-        binding.spExpenseType.adapter = spinnerAdapter
+        binding.btBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
