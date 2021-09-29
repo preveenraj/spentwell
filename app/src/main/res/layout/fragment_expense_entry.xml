@@ -120,19 +120,20 @@
                     android:layout_marginBottom="@dimen/spacingMedium"
                     android:clipChildren="false">
 
-                    <club.cred.synth.views.ElevatedView
-                        android:id="@+id/elevatedView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:neuPlatformColor="@color/colorBackgroundPrimary"
-                        app:neuShadowOffset="2dp" />
+                    <!--                    <club.cred.synth.views.ElevatedView-->
+                    <!--                        android:id="@+id/elevatedView2"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="0dp"-->
+                    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+                    <!--                        app:neuPlatformColor="@color/colorBackgroundPrimary"-->
+                    <!--                        app:neuShadowOffset="2dp" />-->
 
 
                     <RadioGroup
+                        android:onCheckedChanged="@{model.onExpenseTypeSelected}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
@@ -145,6 +146,7 @@
                             android:id="@+id/rbNecessity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:checked="true"
                             android:buttonTint="@color/colorAccent"
                             android:text="necessity"
                             android:textColor="@color/textColorSecondary" />
