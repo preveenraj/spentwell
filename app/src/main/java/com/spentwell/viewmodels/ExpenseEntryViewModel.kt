@@ -1,7 +1,9 @@
 package com.spentwell.viewmodels
 
 import android.app.Application
+import android.widget.RadioGroup
 import androidx.lifecycle.*
+import com.spentwell.R
 import com.spentwell.data.models.Expense
 import com.spentwell.data.models.ExpenseType
 import com.spentwell.data.repository.ExpenseRepository
@@ -77,6 +79,14 @@ class ExpenseEntryViewModel(application: Application) : AndroidViewModel(applica
         sendButtonValidation()
         _eventSubmitExpense.value = false
         _eventCloseNavigation.value = true
+    }
+
+    fun onExpenseTypeSelected(group: RadioGroup, checkedId: Int) {
+        when (checkedId) {
+            R.id.rbNecessity -> _expenseType.value = ExpenseType.NECESSITY
+            R.id.rbLuxury -> _expenseType.value = ExpenseType.LUXURY
+            R.id.rbSavings -> _expenseType.value = ExpenseType.SAVINGS
+        }
     }
 
     fun onCloseNavigationCompleted() {

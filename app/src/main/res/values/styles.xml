@@ -35,6 +35,12 @@
         <item name="neuDarkShadowColor">@color/colorShadowDark</item>
     </style>
 
+    <style name="ElevatedView">
+        <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
+        <item name="neuCornerRadius">5dp</item>
+        <item name="neuShadowOffset">5dp</item>
+    </style>
+
     <style name="FabButton">
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
         <item name="neuButtonRadius">28dp</item>
@@ -44,6 +50,21 @@
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
         <item name="neuButtonRadius">36dp</item>
         <item name="neuButtonType">elevated_flat</item>
+    </style>
+
+    <style name="Heading1">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">32dp</item>
+    </style>
+
+    <style name="Heading2">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="Heading3">
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textSize">18dp</item>
     </style>
 
     <style name="AppNameHeader">

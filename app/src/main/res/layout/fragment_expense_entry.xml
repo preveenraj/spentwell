@@ -10,111 +10,216 @@
             type="com.spentwell.viewmodels.ExpenseEntryViewModel" />
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackgroundPrimary"
-        android:clipChildren="false"
-        android:orientation="vertical"
-        tools:context=".fragments.ExpenseEntryFragment">
+        android:background="@color/colorBackgroundPrimary">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp">
+            android:clipChildren="false">
 
-            <club.cred.synth.views.PitView
-                style="@style/PitView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:orientation="vertical"
+                tools:context=".fragments.ExpenseEntryFragment">
 
-            <EditText
-                android:id="@+id/etExpenseName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@null"
-                android:hint="enter expense name"
-                android:inputType="textCapWords"
-                android:text="@={model.expenseName}"
-                android:textAlignment="center"
-                android:textColorHint="@color/textColorHint"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacingSmall"
+                    android:layout_marginBottom="@dimen/spacingLarge"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:padding="@dimen/spacingMedium">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp">
+                    <club.cred.synth.views.SynthImageButton
+                        android:id="@+id/btBack"
+                        style="@style/FabButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:neuButtonType="elevated_soft"
+                        app:srcCompat="@drawable/ic_baseline_chevron_left_24" />
 
-            <club.cred.synth.views.PitView
-                style="@style/PitView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        style="@style/Heading2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacingMedium"
+                        android:text="create expense"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btBack"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Spinner
-                android:id="@+id/spExpenseType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@null"
-                android:textAlignment="center"
-                android:textColorHint="@color/textColorHint"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    style="@style/Heading3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacingMedium"
+                    android:layout_marginEnd="@dimen/spacingMedium"
+                    android:text="expense name" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacingMedium"
+                    android:layout_marginTop="@dimen/spacingSmall"
+                    android:layout_marginEnd="@dimen/spacingMedium"
+                    android:layout_marginBottom="@dimen/spacingMedium">
 
-            <club.cred.synth.views.PitView
-                style="@style/PitView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    <club.cred.synth.views.PitView
+                        style="@style/PitView"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/etAmount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@null"
-                android:hint="enter amount spent"
-                android:inputType="numberDecimal"
-                android:text="@={model.expenseAmount}"
-                android:textAlignment="center"
-                android:textColorHint="@color/textColorHint"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <EditText
+                        android:id="@+id/etExpenseName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:background="@null"
+                        android:hint="eg: groceries, fuel"
+                        android:inputType="textCapWords"
+                        android:text="@={model.expenseName}"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/textColorHint"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <club.cred.synth.views.SynthButton
-            android:id="@+id/btProceed"
-            android:layout_width="match_parent"
-            style="@style/LongButton"
-            android:text="@string/btn_txt_save"
-            android:onClick="@{()-> model.onSubmitExpense()}"
-            android:layout_height="wrap_content"
-            app:isButtonActive="@{model.isSaveButtonEnabled}" />
-    </LinearLayout>
+                <TextView
+                    style="@style/Heading3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacingMedium"
+                    android:layout_marginTop="@dimen/spacingMedium"
+                    android:layout_marginEnd="@dimen/spacingMedium"
+                    android:text="select expense type"
+                    android:textColor="@color/textColorSecondary" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacingMedium"
+                    android:layout_marginTop="@dimen/spacingMedium"
+                    android:layout_marginEnd="@dimen/spacingMedium"
+                    android:layout_marginBottom="@dimen/spacingMedium"
+                    android:clipChildren="false">
+
+                    <!--                    <club.cred.synth.views.ElevatedView-->
+                    <!--                        android:id="@+id/elevatedView2"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="0dp"-->
+                    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+                    <!--                        app:neuPlatformColor="@color/colorBackgroundPrimary"-->
+                    <!--                        app:neuShadowOffset="2dp" />-->
+
+
+                    <RadioGroup
+                        android:onCheckedChanged="@{model.onExpenseTypeSelected}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <RadioButton
+                            android:id="@+id/rbNecessity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:buttonTint="@color/colorAccent"
+                            android:text="necessity"
+                            android:textColor="@color/textColorSecondary" />
+
+                        <RadioButton
+                            android:id="@+id/rbSavings"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/colorAccent"
+                            android:text="savings"
+                            android:textColor="@color/textColorSecondary" />
+
+                        <RadioButton
+                            android:id="@+id/rbLuxury"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/colorAccent"
+                            android:text="luxury"
+                            android:textColor="@color/textColorSecondary" />
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    style="@style/Heading3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacingMedium"
+                    android:layout_marginEnd="@dimen/spacingMedium"
+                    android:text="amount spent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacingMedium"
+                    android:layout_marginTop="@dimen/spacingMedium"
+                    android:layout_marginEnd="@dimen/spacingMedium"
+                    android:layout_marginBottom="@dimen/spacingMedium">
+
+                    <club.cred.synth.views.PitView
+                        style="@style/PitView"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/etAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:background="@null"
+                        android:hint="eg: 50,000"
+                        android:inputType="numberDecimal"
+                        android:text="@={model.expenseAmount}"
+                        android:textAlignment="center"
+                        android:textColorHint="@color/textColorHint"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <club.cred.synth.views.SynthButton
+                    android:id="@+id/btProceed"
+                    style="@style/LongButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()-> model.onSubmitExpense()}"
+                    android:text="@string/btn_txt_save"
+                    app:isButtonActive="@{model.isSaveButtonEnabled}" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
 </layout>
