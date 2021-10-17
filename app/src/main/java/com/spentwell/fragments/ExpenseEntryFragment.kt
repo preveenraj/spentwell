@@ -1,13 +1,11 @@
 package com.spentwell.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -17,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.spentwell.R
 import com.spentwell.data.models.ExpenseType
 import com.spentwell.databinding.FragmentExpenseEntryBinding
+import com.spentwell.utils.AppUtils
 import com.spentwell.viewmodels.ExpenseEntryViewModel
 
 
@@ -54,8 +53,7 @@ class ExpenseEntryFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onStop() {
         binding.root.let { view ->
-            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-            imm?.hideSoftInputFromWindow(view.windowToken, 0)
+            AppUtils.hideKeyboard(requireContext(), view)
         }
         super.onStop()
     }

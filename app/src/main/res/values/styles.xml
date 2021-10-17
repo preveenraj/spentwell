@@ -35,6 +35,13 @@
         <item name="neuDarkShadowColor">@color/colorShadowDark</item>
     </style>
 
+    <style name="TextInput">
+        <item name="pitColor">@color/colorBackgroundPrimaryDark</item>
+        <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
+        <item name="neuLightShadowColor">@color/colorShadowLight</item>
+        <item name="neuDarkShadowColor">@color/colorShadowDark</item>
+    </style>
+
     <style name="ElevatedView">
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
         <item name="neuCornerRadius">5dp</item>

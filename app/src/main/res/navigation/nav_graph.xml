@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/earningsAllocationFragment">
+    app:startDestination="@id/userNameEntryFragment">
 
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.spentwell.fragments.DashboardFragment"
         android:label="dashboard_fragment"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_expenseEntryFragment"
             app:enterAnim="@anim/anim_slide_in_left"
@@ -69,5 +69,13 @@
         <argument
             android:name="expenseType"
             app:argType="com.spentwell.data.models.ExpenseType" />
+    </fragment>
+    <fragment
+        android:id="@+id/userNameEntryFragment"
+        android:name="com.spentwell.fragments.UserNameEntryFragment"
+        android:label="UserNameEntryFragment">
+        <action
+            android:id="@+id/action_userNameEntryFragment_to_earningsAllocationFragment"
+            app:destination="@id/earningsAllocationFragment" />
     </fragment>
 </navigation>
