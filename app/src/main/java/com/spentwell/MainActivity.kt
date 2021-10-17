@@ -22,14 +22,19 @@ class MainActivity : AppCompatActivity() {
         val navGraph = graphInflater.inflate(R.navigation.nav_graph)
         val navController = navHostFragment.navController
 
-        val destination = if (AppUtils.isEarningsAllocated(this)) {
-            if (AppUtils.isEarningsSet(this)) {
-                R.id.dashboardFragment
+        val destination = if (AppUtils.isUserNameSet(this)) {
+            if (AppUtils.isEarningsAllocated(this)) {
+                if (AppUtils.isEarningsSet(this)) {
+                    R.id.dashboardFragment
+                } else {
+                    R.id.setEarningsFragment
+                }
             } else {
-                R.id.setEarningsFragment
+                R.id.earningsAllocationFragment
             }
         } else {
-            R.id.earningsAllocationFragment
+            R.id.userNameEntryFragment
+
         }
         navGraph.startDestination = destination
         navController.graph = navGraph

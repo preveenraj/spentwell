@@ -5,45 +5,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.spentwell.R
-import com.spentwell.databinding.FragmentSetEarningsBinding
+import com.spentwell.databinding.FragmentUserNameEntryBinding
 import com.spentwell.utils.AppUtils
 import com.spentwell.utils.SharedPrefUtils
-import com.spentwell.viewmodels.SetEarningsViewModel
-import kotlinx.android.synthetic.main.fragment_set_earnings.view.*
+import com.spentwell.viewmodels.UserNameEntryViewModel
 
-
-class SetEarningsFragment : Fragment() {
+class UserNameEntryFragment : Fragment() {
 
     companion object {
-        fun newInstance() = SetEarningsFragment()
+        fun newInstance() = UserNameEntryFragment()
     }
-    private lateinit var viewModel: SetEarningsViewModel
-    private lateinit var binding: FragmentSetEarningsBinding
-    private lateinit var etEarnings: EditText
+
+    private lateinit var viewModel: UserNameEntryViewModel
+    private lateinit var binding: FragmentUserNameEntryBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_set_earnings, container, false
+            inflater, R.layout.fragment_user_name_entry, container, false
         )
-        binding.lifecycleOwner = this
-        etEarnings = binding.earningsContainer.incomePerMonth
-
         setViews()
         return binding.root
     }
 
     private fun setViews() {
-        etEarnings.setOnEditorActionListener { v, actionId, event ->
+        binding.etUserName.setOnEditorActionListener { v, actionId, event ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_DONE -> {
                     saveAndProceed()
@@ -52,25 +46,25 @@ class SetEarningsFragment : Fragment() {
                 else -> false
             }
         }
-        binding.btProceed.setOnClickListener{
-          saveAndProceed()
+        binding.btProceed.setOnClickListener {
+            saveAndProceed()
         }
     }
 
     private fun saveAndProceed() {
-        if (etEarnings.text.isNotEmpty() && etEarnings.text.toString().toFloat() > 1000.0f) {
-            SharedPrefUtils.getSharedPreferences(requireContext()).edit().putFloat(
-                SharedPrefUtils.SHARED_PREFS_KEY_EARNINGS,
-                etEarnings.text.toString().toFloat()
+        if (binding.etUserName.text.isNotEmpty()) {
+            SharedPrefUtils.getSharedPreferences(requireContext()).edit().putString(
+                SharedPrefUtils.SHARED_PREFS_KEY_USER_NAME,
+                binding.etUserName.text.toString()
             ).apply()
             AppUtils.hideKeyboard(requireContext(), requireView())
             val navDirections =
-                SetEarningsFragmentDirections.actionSetEarningsFragmentToDashboardFragment()
+                UserNameEntryFragmentDirections.actionUserNameEntryFragmentToEarningsAllocationFragment()
             findNavController().navigate(navDirections)
         } else {
             Toast.makeText(
                 requireContext(),
-                "Please enter a valid income per month",
+                "Please enter a valid name",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -78,9 +72,10 @@ class SetEarningsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SetEarningsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(UserNameEntryViewModel::class.java)
+        binding.lifecycleOwner = this
         binding.model = viewModel
-        // TODO: Use the ViewModel
+
     }
 
 }

@@ -12,26 +12,26 @@ interface ExpenseDao {
     fun getAll(): LiveData<List<Expense>>
 
     @Query("SELECT * FROM expense WHERE type=:type ORDER BY dateTime LIMIT :count")
-    suspend fun getLatestExpensesOfType(type: ExpenseType, count: Int): List<Expense>
+    fun getLatestExpensesOfType(type: ExpenseType, count: Int): List<Expense>
 
     @Query("SELECT * FROM expense WHERE type=:type ORDER BY dateTime")
-    suspend fun getAllExpensesOfType(type: ExpenseType): List<Expense>
+    fun getAllExpensesOfType(type: ExpenseType): List<Expense>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg users: Expense): List<Long>
+    fun insertAll(vararg users: Expense): List<Long>
 
     @Query("SELECT * FROM expense WHERE dateTime>:startDate AND dateTime<:endDate  ORDER BY dateTime")
-    suspend fun getAllExpensesForDateRange(startDate: Date, endDate: Date): List<Expense>
+    fun getAllExpensesForDateRange(startDate: Date, endDate: Date): List<Expense>
 
     @Query("SELECT * FROM expense WHERE dateTime>:startDate AND dateTime<:endDate AND type=:type ORDER BY dateTime")
-    suspend fun getAllExpensesForDateRangeAndType(
+    fun getAllExpensesForDateRangeAndType(
         startDate: Date,
         endDate: Date,
         type: ExpenseType
     ): List<Expense>
 
     @Query("SELECT * FROM expense WHERE dateTime>:startDate AND dateTime<:endDate AND type=:type ORDER BY dateTime LIMIT :count")
-    suspend fun getAllExpensesForDateRangeAndType(
+    fun getAllExpensesForDateRangeAndType(
         startDate: Date,
         endDate: Date,
         type: ExpenseType,
