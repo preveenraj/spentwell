@@ -1,11 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:clipChildren="false"
-    android:layout_width="match_parent"
-    android:background="@color/colorBackgroundPrimary"
-    android:layout_height="match_parent"
-    tools:context=".fragments.SettingsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.spentwell.viewmodels.SettingsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackgroundPrimary"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        tools:context=".fragments.SettingsFragment">
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp"
+                android:text="@string/settings_header"
+                android:textColor="@color/textHeader"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginHorizontal="12dp"
+                android:background="@color/colorShadowDark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/settings_income_container" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hello_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <TextView
+                android:id="@+id/hi_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi, "
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preveen Raj"
+                android:textColor="@color/textColorAccent"
+                android:textSize="42sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/settings_income_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hello_container">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/income_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Monthly Income" />
+
+                <TextView
+                    android:id="@+id/income_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="32,000"
+                    android:textSize="32sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/edit_income"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="bottom">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/edit_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="edit"
+                    android:textColor="@color/textColorSecondary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="12dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_income_container" />
+
+        <LinearLayout
+            android:id="@+id/settings_allocation_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@id/settings_income_container">
+
+            <TextView
+                android:id="@+id/allocation_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Allocations"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <include
+                android:id="@+id/allocationContainer"
+                layout="@layout/edit_earnings_allocations"
+                android:layout_width="match_parent"
+                android:layout_height="302dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.45" />
+
+            <LinearLayout
+                android:id="@+id/overAllProgressContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/allocationContainer">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/overAllProgressBarContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false">
+
+                    <club.cred.synth.views.PitView
+                        android:id="@+id/overAllProgressBarPit"
+                        android:layout_width="200dp"
+                        android:layout_height="10dp"
+                        android:layout_marginHorizontal="100dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:pitColor="@color/colorBackgroundPrimary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/overAllProgressBarPit"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/overAllProgressBarPit"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/overAllProgressCard"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            app:cardBackgroundColor="@color/colorNegative"
+                            app:cardCornerRadius="4dp" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/overAllProgressValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacingSmall"
+                    android:layout_marginRight="100dp"
+                    android:text="98/100"
+                    android:textAlignment="textEnd"
+                    android:textSize="@dimen/textSizeNormal" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <club.cred.synth.views.SynthButton
+            android:id="@+id/btSave"
+            style="@style/SmallButton"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_txt_save"
+            app:isButtonActive="@{model.isSaveButtonEnabled}"
+            app:layout_constraintTop_toBottomOf="@+id/settings_allocation_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.469"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

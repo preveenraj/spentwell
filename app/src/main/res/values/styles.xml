@@ -28,6 +28,19 @@
         <item name="android:letterSpacing">0.3</item>
     </style>
 
+    <style name="SmallButton">
+        <!-- Customize your theme here. -->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/textColorButton</item>
+        <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
+        <item name="neuButtonType">elevated_flat</item>
+        <item name="neuFlatButtonColor">@color/colorButtonEnabled</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:letterSpacing">0.3</item>
+    </style>
+
     <style name="PitView">
         <item name="pitColor">@color/colorBackgroundPrimaryDark</item>
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
@@ -37,8 +50,8 @@
 
     <style name="ElevatedView">
         <item name="neuPlatformColor">@color/colorBackgroundPrimary</item>
-        <item name="neuCornerRadius">5dp</item>
-        <item name="neuShadowOffset">5dp</item>
+        <item name="neuCornerRadius">4dp</item>
+        <item name="neuShadowOffset">4dp</item>
     </style>
 
     <style name="FabButton">
@@ -72,5 +85,6 @@
         <item name="android:textSize">@dimen/textSizeAppName</item>
 
     </style>
+
 
 </resources>

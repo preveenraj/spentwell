@@ -19,6 +19,10 @@
             app:destination="@id/expenseEntryFragment" />
         <action
             android:id="@+id/action_dashboardFragment_to_settingsFragment"
+            app:enterAnim="@anim/anim_slide_in_left"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_right"
+            app:popExitAnim="@anim/anim_slide_out_right"
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_dashboardFragment_to_categoryExpensesFragment"
@@ -61,7 +65,15 @@
         android:id="@+id/settingsFragment"
         android:name="com.spentwell.fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_dashboardFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_right"
+            app:popEnterAnim="@anim/anim_slide_in_right"
+            app:popExitAnim="@anim/anim_slide_out_right"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/categoryExpensesFragment"
         android:name="com.spentwell.fragments.CategoryExpensesFragment"

@@ -23,6 +23,7 @@
     <color name="textColorButton">#C9FFFFFF</color>
     <color name="textColorAccent">@color/colorAccent</color>
     <color name="textColorHint">#66FFFFFF</color>
+    <color name="textHeader">#16a085</color>
 
     <!--  BUTTON  -->
     <color name="colorButtonEnabled">@color/colorAccent</color>
