@@ -41,10 +41,14 @@ class SettingsFragment : Fragment() {
 
     private fun setButton() {
 
+        binding.btBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         binding.btSave.setOnClickListener {
-            val necessitiesValue = binding.allocationContainer.necessitiesSeekBar.progress;
-            val savingsValue = binding.allocationContainer.savingsSeekBar.progress;
-            val luxuriesValue = binding.allocationContainer.luxuriesSeekBar.progress;
+            val necessitiesValue = binding.allocationContainer.necessitiesSeekBar.progress
+            val savingsValue = binding.allocationContainer.savingsSeekBar.progress
+            val luxuriesValue = binding.allocationContainer.luxuriesSeekBar.progress
 
             if( (necessitiesValue + savingsValue + luxuriesValue) == 100 ) {
                 val editor: SharedPreferences.Editor = allocationPref.edit()

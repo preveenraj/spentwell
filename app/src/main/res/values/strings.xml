@@ -2,5 +2,5 @@
     <string name="app_name">SpentWell</string>
     <string name="btn_txt_proceed">PROCEED</string>
     <string name="btn_txt_save">SAVE</string>
-    <string name="settings_header"><![CDATA[Settings]]></string>
+    <string name="settings_header"><![CDATA[settings]]></string>
 </resources>
