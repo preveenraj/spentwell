@@ -16,8 +16,6 @@ import com.spentwell.R
 import com.spentwell.databinding.FragmentEarningsAllocationBinding
 import com.spentwell.utils.SharedPrefUtils
 import com.spentwell.viewmodels.EarningsAllocationViewModel
-import kotlinx.android.synthetic.main.fragment_earnings_allocation.view.*
-
 
 class EarningsAllocationFragment : Fragment() {
 
@@ -30,10 +28,6 @@ class EarningsAllocationFragment : Fragment() {
 
     private lateinit var allocationPref: SharedPreferences
 
-    private lateinit var necessities: LinearLayout;
-    private lateinit var  savings: LinearLayout;
-    private lateinit var luxuries: LinearLayout;
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,20 +36,17 @@ class EarningsAllocationFragment : Fragment() {
             inflater, R.layout.fragment_earnings_allocation, container, false
         )
         binding.lifecycleOwner = this
-        necessities = binding.allocationContainer.necessitiesContainer;
-        savings = binding.allocationContainer.savingsContainer;
-        luxuries = binding.allocationContainer.luxuriesContainer;
-        setViews()
+        setButton()
 
         return binding.root
     }
 
-    private fun setViews() {
+    private fun setButton() {
 
         binding.btProceed.setOnClickListener {
-            val necessitiesValue = necessities.necessitiesSeekBar.progress;
-            val savingsValue = savings.savingsSeekBar.progress;
-            val luxuriesValue = luxuries.luxuriesSeekBar.progress;
+            val necessitiesValue = binding.allocationContainer.necessitiesSeekBar.progress;
+            val savingsValue = binding.allocationContainer.savingsSeekBar.progress;
+            val luxuriesValue = binding.allocationContainer.luxuriesSeekBar.progress;
 
             if( (necessitiesValue + savingsValue + luxuriesValue) == 100 ) {
                 val editor: SharedPreferences.Editor = allocationPref.edit()
@@ -89,12 +80,12 @@ class EarningsAllocationFragment : Fragment() {
     }
 
     private fun setOverAllProgress():Int {
-        val n = necessities.necessitiesSeekBar.progress;
-        val s = savings.savingsSeekBar.progress;
-        val l = luxuries.luxuriesSeekBar.progress;
+        val n = binding.allocationContainer.necessitiesSeekBar.progress;
+        val s = binding.allocationContainer.savingsSeekBar.progress;
+        val l = binding.allocationContainer.luxuriesSeekBar.progress;
 
-        val overAll = binding.overAllProgressContainer.overAllProgressValue;
-        val overAllCard = binding.overAllProgressBarContainer.overAllProgressCard;
+        val overAll = binding.overAllProgressValue;
+        val overAllCard = binding.overAllProgressCard;
         val sum = (n+s+l);
         overAll.text = " ${sum}/100"
         val layoutParams = overAllCard!!.layoutParams
@@ -116,99 +107,87 @@ class EarningsAllocationFragment : Fragment() {
         return sum
     }
 
+
     private fun setSeekBars() {
 
 //        NECESSITIES
         val necessitiesValueStored = allocationPref.getInt("necessities", 50)  ?: 0;
-        necessities.necessitiesSeekBar.progress = necessitiesValueStored;
-        necessities.necessitiesValue.text = necessitiesValueStored.toString();
+        binding.allocationContainer.necessitiesSeekBar.progress = necessitiesValueStored;
+        binding.allocationContainer.necessitiesValue.text = necessitiesValueStored.toString();
 
-        necessities.necessitiesSeekBar.setOnSeekBarChangeListener(object :
+        binding.allocationContainer.necessitiesSeekBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
                 // Display the current progress of SeekBar
                 val sumOfAllAllocations = setOverAllProgress()
-                necessities.necessitiesValue.text = "$i"
+                binding.allocationContainer.necessitiesValue.text = "$i"
                 if (b) {
-                    necessities.necessitiesSeekBar.progress = (i/5).toInt() * 5
+                    binding.allocationContainer.necessitiesSeekBar.progress = (i/5).toInt() * 5
                 }
                 if (b && (sumOfAllAllocations > 100)) {
-                    necessities.necessitiesSeekBar.progress= 100 - (sumOfAllAllocations - i)
+                    binding.allocationContainer.necessitiesSeekBar.progress= 100 - (sumOfAllAllocations - i)
                 }
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-                // Do something
-//                Toast.makeText(applicationContext,"start tracking",Toast.LENGTH_SHORT).show()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                // Do something
-//                Toast.makeText(applicationContext,"stop tracking", Toast.LENGTH_SHORT).show()
-            }
-        })
-
-//      LUXURIES
-        val luxuriesValueStored = allocationPref.getInt("luxuries", 30) ?: 0;
-
-        luxuries.luxuriesSeekBar.progress = luxuriesValueStored
-        luxuries.luxuriesValue.text = luxuriesValueStored.toString()
-        luxuries.luxuriesSeekBar.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-
-            override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
-                // Display the current progress of SeekBar
-                val sumOfAllAllocations = setOverAllProgress()
-                luxuries.luxuriesValue.text = "$i"
-                if (b) {
-                    luxuries.luxuriesSeekBar.progress = (i/5).toInt() * 5
-                }
-                if (b && (sumOfAllAllocations > 100)) {
-                    luxuries.luxuriesSeekBar.progress = 100 - (sumOfAllAllocations - i)
-                }
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
-                // Do something
-//                Toast.makeText(applicationContext,"start tracking",Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar) {
-                // Do something
-//                Toast.makeText(applicationContext,"stop tracking", Toast.LENGTH_SHORT).show()
             }
         })
 
 
 //      SAVINGS
         val savingsValueStored = allocationPref.getInt("savings", 20)  ?: 0;
-        savings.savingsSeekBar.progress = savingsValueStored
-        savings.savingsValue.text = savingsValueStored.toString()
+        binding.allocationContainer.savingsSeekBar.progress = savingsValueStored
+        binding.allocationContainer.savingsValue.text = savingsValueStored.toString()
 
-        savings.savingsSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.allocationContainer.savingsSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
                 // Display the current progress of SeekBar
                 val sumOfAllAllocations = setOverAllProgress()
-                savings.savingsValue.text = "$i"
+                binding.allocationContainer.savingsValue.text = "$i"
                 if (b) {
-                    savings.savingsSeekBar.progress = (i/5).toInt() * 5
+                    binding.allocationContainer.savingsSeekBar.progress = (i/5).toInt() * 5
                 }
                 if (b && (sumOfAllAllocations > 100)) {
-                    savings.savingsSeekBar.progress = 100 - (sumOfAllAllocations - i)
+                    binding.allocationContainer.savingsSeekBar.progress = 100 - (sumOfAllAllocations - i)
                 }
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-                // Do something
-//                Toast.makeText(applicationContext,"start tracking",Toast.LENGTH_SHORT).show()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                // Do something
-//                Toast.makeText(applicationContext,"stop tracking", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+//      LUXURIES
+        val luxuriesValueStored = allocationPref.getInt("luxuries", 30) ?: 0;
+
+        binding.allocationContainer.luxuriesSeekBar.progress = luxuriesValueStored
+        binding.allocationContainer.luxuriesValue.text = luxuriesValueStored.toString()
+        binding.allocationContainer.luxuriesSeekBar.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+
+            override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
+                // Display the current progress of SeekBar
+                val sumOfAllAllocations = setOverAllProgress()
+                binding.allocationContainer.luxuriesValue.text = "$i"
+                if (b) {
+                    binding.allocationContainer.luxuriesSeekBar.progress = (i/5).toInt() * 5
+                }
+                if (b && (sumOfAllAllocations > 100)) {
+                    binding.allocationContainer.luxuriesSeekBar.progress = 100 - (sumOfAllAllocations - i)
+                }
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
             }
 
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+            }
         })
+
+
 
         setOverAllProgress()
 
